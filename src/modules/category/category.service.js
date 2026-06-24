@@ -3,12 +3,13 @@ import { prisma, slugify, cache } from "#lib/index.js";
 const LIST_KEY = "categories:list";
 
 export const categoryService = {
-  list: async () => {
-    const cached = await cache.get(LIST_KEY);
-    if (cached) return cached;
-    const data = await prisma.category.findMany({ orderBy: { createdAt: "desc" } });
-    await cache.set(LIST_KEY, data, 120);
-    return data;
+  list: async (onlyPublished = false) => {
+    let data = await cache.get(LIST_KEY);
+    if (!data) {
+      data = await prisma.category.findMany({ orderBy: { createdAt: "desc" } });
+      await cache.set(LIST_KEY, data, 120);
+    }
+    return onlyPublished ? data.filter((c) => c.status === "PUBLISHED") : data;
   },
 
   byId: (id) =>
@@ -17,11 +18,20 @@ export const categoryService = {
       include: { products: true, blogs: true },
     }),
 
-  byPath: (path) =>
-    prisma.category.findUnique({
+  byPath: async (path, onlyPublished = false) => {
+    const category = await prisma.category.findUnique({
       where: { path },
-      include: { products: true, blogs: true },
-    }),
+      include: onlyPublished
+        ? {
+            products: { where: { status: "PUBLISHED" } },
+            blogs: { where: { status: "PUBLISHED" } },
+          }
+        : { products: true, blogs: true },
+    });
+    // A draft/archived category isn't visible to the public.
+    if (onlyPublished && category && category.status !== "PUBLISHED") return null;
+    return category;
+  },
 
   create: async (input, editor) => {
     const path = input.path?.trim() || slugify(input.name);

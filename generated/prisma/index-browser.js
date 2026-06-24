@@ -220,6 +220,18 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TestimonialScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  designation: 'designation',
+  rating: 'rating',
+  description: 'description',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -261,7 +273,8 @@ exports.Prisma.ModelName = {
   Product: 'Product',
   Contact: 'Contact',
   Blog: 'Blog',
-  Appointment: 'Appointment'
+  Appointment: 'Appointment',
+  Testimonial: 'Testimonial'
 };
 
 /**

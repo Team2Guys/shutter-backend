@@ -7,10 +7,11 @@ import {
 
 export const categoryResolvers = {
   Query: {
-    categoryList: handlePromise(() => categoryService.list()),
+    // Public (no auth) sees only PUBLISHED; an authenticated admin sees all.
+    categoryList: handlePromise((_p, _a, ctx) => categoryService.list(!ctx.user)),
     categoryById: handlePromise((_p, { id }) => categoryService.byId(id)),
-    categoryByPath: handlePromise((_p, { path }) =>
-      categoryService.byPath(path)
+    categoryByPath: handlePromise((_p, { path }, ctx) =>
+      categoryService.byPath(path, !ctx.user)
     ),
   },
 

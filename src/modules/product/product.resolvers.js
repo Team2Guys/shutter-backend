@@ -7,11 +7,13 @@ import {
 
 export const productResolvers = {
   Query: {
-    productList: handlePromise(() => productService.list()),
+    productList: handlePromise((_p, _a, ctx) => productService.list(!ctx.user)),
     productById: handlePromise((_p, { id }) => productService.byId(id)),
-    productByPath: handlePromise((_p, { path }) => productService.byPath(path)),
-    productsByCategory: handlePromise((_p, { categoryId }) =>
-      productService.byCategory(categoryId)
+    productByPath: handlePromise((_p, { path }, ctx) =>
+      productService.byPath(path, !ctx.user)
+    ),
+    productsByCategory: handlePromise((_p, { categoryId }, ctx) =>
+      productService.byCategory(categoryId, !ctx.user)
     ),
   },
 

@@ -4,11 +4,13 @@ import { createBlogSchema, updateBlogSchema } from "./blog.validation.js";
 
 export const blogResolvers = {
   Query: {
-    blogList: handlePromise(() => blogService.list()),
+    blogList: handlePromise((_p, _a, ctx) => blogService.list(!ctx.user)),
     blogById: handlePromise((_p, { id }) => blogService.byId(id)),
-    blogByPath: handlePromise((_p, { path }) => blogService.byPath(path)),
-    blogsByCategory: handlePromise((_p, { categoryId }) =>
-      blogService.byCategory(categoryId)
+    blogByPath: handlePromise((_p, { path }, ctx) =>
+      blogService.byPath(path, !ctx.user)
+    ),
+    blogsByCategory: handlePromise((_p, { categoryId }, ctx) =>
+      blogService.byCategory(categoryId, !ctx.user)
     ),
   },
 

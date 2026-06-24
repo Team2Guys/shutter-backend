@@ -3,26 +3,36 @@ import { prisma, slugify, cache } from "#lib/index.js";
 const LIST_KEY = "products:list";
 
 export const productService = {
-  list: async () => {
-    const cached = await cache.get(LIST_KEY);
-    if (cached) return cached;
-    const data = await prisma.product.findMany({
-      orderBy: { createdAt: "desc" },
-      include: { category: true },
-    });
-    await cache.set(LIST_KEY, data, 120);
-    return data;
+  list: async (onlyPublished = false) => {
+    let data = await cache.get(LIST_KEY);
+    if (!data) {
+      data = await prisma.product.findMany({
+        orderBy: { createdAt: "desc" },
+        include: { category: true },
+      });
+      await cache.set(LIST_KEY, data, 120);
+    }
+    return onlyPublished ? data.filter((p) => p.status === "PUBLISHED") : data;
   },
 
   byId: (id) =>
     prisma.product.findUnique({ where: { id }, include: { category: true } }),
 
-  byPath: (path) =>
-    prisma.product.findUnique({ where: { path }, include: { category: true } }),
+  byPath: async (path, onlyPublished = false) => {
+    const product = await prisma.product.findUnique({
+      where: { path },
+      include: { category: true },
+    });
+    if (onlyPublished && product && product.status !== "PUBLISHED") return null;
+    return product;
+  },
 
-  byCategory: (categoryId) =>
+  byCategory: (categoryId, onlyPublished = false) =>
     prisma.product.findMany({
-      where: { categoryId },
+      where: {
+        categoryId,
+        ...(onlyPublished ? { status: "PUBLISHED" } : {}),
+      },
       orderBy: { createdAt: "desc" },
       include: { category: true },
     }),

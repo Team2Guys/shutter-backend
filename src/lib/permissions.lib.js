@@ -19,6 +19,11 @@ export const PERMISSIONS = {
   EDIT_BLOG: "canEditBlog",
   DELETE_BLOG: "canDeleteBlog",
 
+  // Testimonial
+  ADD_TESTIMONIAL: "canAddTestimonial",
+  EDIT_TESTIMONIAL: "canEditTestimonial",
+  DELETE_TESTIMONIAL: "canDeleteTestimonial",
+
   // Appointment (view only — appointments cannot be deleted)
   VIEW_APPOINTMENTS: "canViewAppointments",
 

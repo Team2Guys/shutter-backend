@@ -8,6 +8,7 @@ import { productTypeDefs, productResolvers } from "./product/index.js";
 import { blogTypeDefs, blogResolvers } from "./blog/index.js";
 import { appointmentTypeDefs, appointmentResolvers } from "./appointment/index.js";
 import { contactTypeDefs, contactResolvers } from "./contact/index.js";
+import { testimonialTypeDefs, testimonialResolvers } from "./testimonial/index.js";
 
 export const typeDefs = mergeTypeDefs([
   commonTypeDefs,
@@ -18,6 +19,7 @@ export const typeDefs = mergeTypeDefs([
   blogTypeDefs,
   appointmentTypeDefs,
   contactTypeDefs,
+  testimonialTypeDefs,
 ]);
 
 export const resolvers = mergeResolvers([
@@ -29,4 +31,5 @@ export const resolvers = mergeResolvers([
   blogResolvers,
   appointmentResolvers,
   contactResolvers,
+  testimonialResolvers,
 ]);
