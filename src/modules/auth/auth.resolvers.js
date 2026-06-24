@@ -46,7 +46,13 @@ export const authResolvers = {
         email === SUPER_ADMIN_EMAIL.toLowerCase() &&
         password === SUPER_ADMIN_PASSWORD;
 
-      let admin = await prisma.admin.findUnique({ where: { email } });
+      let admin;
+      try {
+        admin = await prisma.admin.findUnique({ where: { email } });
+      } catch (error) {
+        logger.error(`[auth] DB Error on signIn: ${error.message}`);
+        throw createError(401, "invalid credential");
+      }
 
       // Bootstrap the super admin from .env on first login (no manual seeding).
       if (!admin && isEnvSuperAdmin) {
@@ -64,12 +70,12 @@ export const authResolvers = {
         logger.info(`[auth] Super admin bootstrapped from env: ${admin.email}`);
       }
 
-      if (!admin) throw createError(401, "Invalid email or password.");
+      if (!admin) throw createError(401, "invalid credential");
 
       let isValid = await bcryptUtils.compare(password, admin.password);
       // Accept env super-admin credentials even if the stored hash is stale.
       if (!isValid && isEnvSuperAdmin) isValid = true;
-      if (!isValid) throw createError(401, "Invalid email or password.");
+      if (!isValid) throw createError(401, "invalid credential");
 
       const accessToken = tokenUtils.generate(
         { id: admin.id, role: admin.role },
@@ -99,7 +105,13 @@ export const authResolvers = {
     passwordResetRequest: handlePromise(async (_parent, { input }) => {
       const { email } = validate(passwordResetRequestSchema, input);
 
-      const admin = await prisma.admin.findUnique({ where: { email } });
+      let admin;
+      try {
+        admin = await prisma.admin.findUnique({ where: { email } });
+      } catch (error) {
+        logger.error(`[auth] DB Error on passwordResetRequest: ${error.message}`);
+        // Treat as not found to avoid leaking info
+      }
       // Always return success to avoid leaking which emails exist.
       if (!admin) {
         return {
