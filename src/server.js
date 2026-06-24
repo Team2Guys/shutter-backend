@@ -32,10 +32,6 @@ export const init = () => {
   return ready;
 };
 
-/**
- * Vercel serverless entry: ensure setup has run, then delegate the request to
- * the configured Express app.
- */
 export default async function handler(req, res) {
   await init();
   return app(req, res);
