@@ -76,7 +76,7 @@ export const productTypeDefs = gql`
   }
 
   type Query {
-    productList: [Product!]!
+    productList(published: Boolean): [Product!]!
     productById(id: ID!): Product
     productByPath(path: String!): Product
     productsByCategory(categoryId: ID!): [Product!]!

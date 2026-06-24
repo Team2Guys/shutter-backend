@@ -31,12 +31,6 @@ const validators = {
   USER_EMAIL: email({ desc: "SMTP / sender email address" }),
   USER_PASSWORD: str({ desc: "SMTP password" }),
 
-  // Comma-separated company inboxes that receive appointment / contact alerts
-  NOTIFICATION_EMAILS: str({
-    desc: "Comma-separated company emails that receive new appointment/contact alerts",
-    default: "",
-  }),
-
   // Dedicated sending account (appointment + contact mail is sent FROM here)
   EMAIL_USER: str({ default: "", desc: "Sender email account (e.g. orders@cheapblinds.ae)" }),
   EMAIL_PASS: str({ default: "", desc: "Password for EMAIL_USER" }),
@@ -74,8 +68,9 @@ const cleanEmail = (v) => (v || "").replace(/^[\s",]+|[\s",]+$/g, "").trim();
 
 /** Company inboxes that receive appointment + contact notifications. */
 export const NOTIFICATION_RECIPIENTS = [
-  ...[env.ORDER_MAIL1, env.ORDER_MAIL2, env.ORDER_MAIL3],
-  ...env.NOTIFICATION_EMAILS.split(","),
+  env.ORDER_MAIL1,
+  env.ORDER_MAIL2,
+  env.ORDER_MAIL3,
 ]
   .map(cleanEmail)
   .filter(Boolean);

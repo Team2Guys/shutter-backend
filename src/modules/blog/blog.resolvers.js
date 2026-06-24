@@ -4,7 +4,9 @@ import { createBlogSchema, updateBlogSchema } from "./blog.validation.js";
 
 export const blogResolvers = {
   Query: {
-    blogList: handlePromise((_p, _a, ctx) => blogService.list(!ctx.user)),
+    blogList: handlePromise((_p, { published }, ctx) =>
+      blogService.list(published === true || !ctx.user)
+    ),
     blogById: handlePromise((_p, { id }) => blogService.byId(id)),
     blogByPath: handlePromise((_p, { path }, ctx) =>
       blogService.byPath(path, !ctx.user)

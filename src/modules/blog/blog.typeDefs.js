@@ -52,7 +52,7 @@ export const blogTypeDefs = gql`
   }
 
   type Query {
-    blogList: [Blog!]!
+    blogList(published: Boolean): [Blog!]!
     blogById(id: ID!): Blog
     blogByPath(path: String!): Blog
     blogsByCategory(categoryId: ID!): [Blog!]!

@@ -7,8 +7,8 @@ import {
 
 export const testimonialResolvers = {
   Query: {
-    testimonialList: handlePromise((_p, _a, ctx) =>
-      testimonialService.list(!ctx.user)
+    testimonialList: handlePromise((_p, { published }, ctx) =>
+      testimonialService.list(published === true || !ctx.user)
     ),
     testimonialById: handlePromise((_p, { id }) => testimonialService.byId(id)),
   },

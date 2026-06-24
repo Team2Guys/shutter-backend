@@ -50,7 +50,7 @@ export const categoryTypeDefs = gql`
   }
 
   type Query {
-    categoryList: [Category!]!
+    categoryList(published: Boolean): [Category!]!
     categoryById(id: ID!): Category
     categoryByPath(path: String!): Category
   }

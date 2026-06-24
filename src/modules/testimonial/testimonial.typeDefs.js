@@ -30,7 +30,7 @@ export const testimonialTypeDefs = gql`
   }
 
   type Query {
-    testimonialList: [Testimonial!]!
+    testimonialList(published: Boolean): [Testimonial!]!
     testimonialById(id: ID!): Testimonial
   }
 

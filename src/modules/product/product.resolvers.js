@@ -7,7 +7,9 @@ import {
 
 export const productResolvers = {
   Query: {
-    productList: handlePromise((_p, _a, ctx) => productService.list(!ctx.user)),
+    productList: handlePromise((_p, { published }, ctx) =>
+      productService.list(published === true || !ctx.user)
+    ),
     productById: handlePromise((_p, { id }) => productService.byId(id)),
     productByPath: handlePromise((_p, { path }, ctx) =>
       productService.byPath(path, !ctx.user)
