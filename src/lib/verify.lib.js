@@ -1,19 +1,44 @@
-import createError from 'http-errors';
+import createError from "http-errors";
 
-export const verificationUtils = {
-  verifyAccess: (resolver) => (parent, args, context, info) => {
-    if (!context.user) throw createError(401, 'Missing access token.');
+const requireAuth = (context) => {
+  if (!context.user) throw createError(401, "Authentication required.");
+};
+
+/**
+ * Resolver guards. Compose like:
+ *   verify.permission('canAddCategory')(resolverFn)
+ * SUPER_ADMIN bypasses every permission check.
+ */
+export const verify = {
+  access: (resolver) => (parent, args, context, info) => {
+    requireAuth(context);
     return resolver(parent, args, context, info);
   },
 
-  verifyRole:
-    (authorizedRoles) => (resolver) => (parent, args, context, info) => {
-      if (!context.user) throw createError(401, 'Authentication required.');
-      if (!authorizedRoles.includes(context.user.role))
+  role: (authorizedRoles) => (resolver) => (parent, args, context, info) => {
+    requireAuth(context);
+    if (!authorizedRoles.includes(context.user.role)) {
+      throw createError(
+        403,
+        `Access denied: requires one of ${authorizedRoles.join(", ")}.`
+      );
+    }
+    return resolver(parent, args, context, info);
+  },
+
+  permission:
+    (permissionKey) => (resolver) => (parent, args, context, info) => {
+      requireAuth(context);
+      const { role, permissions = [] } = context.user;
+      if (role === "SUPER_ADMIN") {
+        return resolver(parent, args, context, info);
+      }
+      if (!permissions.includes(permissionKey)) {
         throw createError(
           403,
-          `Access denied: one of ${authorizedRoles.join(', ')} role required.`
+          `Access denied: missing permission "${permissionKey}".`
         );
+      }
       return resolver(parent, args, context, info);
-    }
+    },
 };

@@ -1,40 +1,29 @@
 import express from "express";
-import dotenv from "dotenv";
-import { ApolloServer } from "@apollo/server";
-import { expressMiddleware } from "@as-integrations/express5";
-import { typeDefs, resolvers } from "./modules/index.js";
-import { tokenUtils } from "#lib/token.lib.js";
-import cookieParser from 'cookie-parser';
 
-dotenv.config();
-const PORT = process.env.PORT;
+import { env } from "#config/index.js";
+import { apolloServer } from "./apollo/server.js";
+import { setupMiddleware } from "#middleware/index.js";
+import { connectDatabase, logger, getServerInfo } from "#lib/index.js";
 
-(async function App() {
-  const app = express();
-  app.use(express.json());
-  app.use(cookieParser());
+const { PORT } = env;
+const app = express();
 
-  const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+(async function main() {
+  try {
+    await connectDatabase();
+    await apolloServer.start();
 
-  await apolloServer.start();
-  app.use("/graphql",expressMiddleware(apolloServer,{
-    context:({ req, res })=>{
-      let user = null;
+    setupMiddleware(app, apolloServer);
 
-    const accessToken = req.cookies["accessToken"];
-    if (accessToken) {
-      try {
-      user = tokenUtils.verify(accessToken);
+    app.get("/", (_req, res) =>
+      res.json({ status: "OK", service: "shutter-backend" })
+    );
 
-    } catch {
-     user = null 
-    }
-    }
-    return { user, req, res};
-    }
-  }));
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, () => logger.info(getServerInfo()));
+  } catch (error) {
+    logger.error(`Failed to start server: ${error.message}`);
+    process.exit(1);
+  }
 })();
+
+export default app;

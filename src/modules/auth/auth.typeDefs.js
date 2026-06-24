@@ -1,56 +1,37 @@
 import gql from "graphql-tag";
 
 export const authTypeDefs = gql`
-  enum Role {
-    USER
-    ADMIN
-  }
-
-  input SignupInput {
+  type AuthResponse {
+    id: ID!
     name: String!
     email: String!
+    role: AdminRole!
+    permissions: [String!]!
+    accessToken: String!
+  }
+
+  input SignInInput {
+    email: String!
     password: String!
-    role: Role!
   }
 
   input PasswordResetRequestInput {
     email: String!
   }
 
-  input PasswordUpdateInput {
-    password: String!
+  input UpdatePasswordInput {
     resetToken: String!
-  }
-
-  input SigninInput {
-    email: String!
     password: String!
-    role: Role!
   }
 
-  type SigninResponse {
-    id: String!
-    name: String!
-    email: String!
-    role: Role!
-    accessToken: String!
-  }
-
-  type SignUpGenericResponse {
-    message: String!
-    verificationToken: String
-  }
-
-  type ResetResponse {
-    message: String!
-    resetToken: String
+  type Query {
+    me: Admin
   }
 
   type Mutation {
-    signUp(input: SignupInput!): SignUpGenericResponse
-    signIn(input: SigninInput!): SigninResponse
-    signOut: GenericResponse
-    passwordResetRequest(input: PasswordResetRequestInput!): ResetResponse
-    updatePassword(input: PasswordUpdateInput!): GenericResponse
+    signIn(input: SignInInput!): AuthResponse!
+    signOut: GenericResponse!
+    passwordResetRequest(input: PasswordResetRequestInput!): GenericResponse!
+    updatePassword(input: UpdatePasswordInput!): GenericResponse!
   }
 `;

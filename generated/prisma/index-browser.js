@@ -120,13 +120,14 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
   password: 'password',
   role: 'role',
-  isEmailVerified: 'isEmailVerified',
+  permissions: 'permissions',
+  lastEditedBy: 'lastEditedBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -134,20 +135,89 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug',
   description: 'description',
+  breadcrumb: 'breadcrumb',
+  bannerImage: 'bannerImage',
+  path: 'path',
+  posterImage: 'posterImage',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.SubcategoryScalarFieldEnum = {
+exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   categoryId: 'categoryId',
   name: 'name',
-  slug: 'slug',
   description: 'description',
+  breadcrumb: 'breadcrumb',
+  bannerImage: 'bannerImage',
+  path: 'path',
+  posterImage: 'posterImage',
+  firstImage: 'firstImage',
+  firstHeadinf: 'firstHeadinf',
+  firstDescription: 'firstDescription',
+  secondImage: 'secondImage',
+  secondHeading: 'secondHeading',
+  secondDescription: 'secondDescription',
+  productImages: 'productImages',
+  faq: 'faq',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ContactScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  whatsapp: 'whatsapp',
+  message: 'message',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  title: 'title',
+  path: 'path',
+  posterImage: 'posterImage',
+  bannerImage: 'bannerImage',
+  content: 'content',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  imageAltText: 'imageAltText',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  whatsapp: 'whatsapp',
+  availableTime: 'availableTime',
+  emirate: 'emirate',
+  area: 'area',
+  message: 'message',
+  shutterTypes: 'shutterTypes',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -155,19 +225,43 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-exports.Role = exports.$Enums.Role = {
-  USER: 'USER',
-  ADMIN: 'ADMIN'
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.AdminRole = exports.$Enums.AdminRole = {
+  ADMIN: 'ADMIN',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+};
+
+exports.ContentStatus = exports.$Enums.ContentStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
 };
 
 exports.Prisma.ModelName = {
-  User: 'User',
+  Admin: 'Admin',
   Category: 'Category',
-  Subcategory: 'Subcategory'
+  Product: 'Product',
+  Contact: 'Contact',
+  Blog: 'Blog',
+  Appointment: 'Appointment'
 };
 
 /**

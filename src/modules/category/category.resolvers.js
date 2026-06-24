@@ -1,67 +1,38 @@
-import createError from "http-errors";
-import { prisma } from "#lib/index.js";
+import { validate, verify, handlePromise, PERMISSIONS } from "#lib/index.js";
+import { categoryService } from "./category.service.js";
+import {
+  createCategorySchema,
+  updateCategorySchema,
+} from "./category.validation.js";
 
 export const categoryResolvers = {
   Query: {
-    category: async () => {
-      try {
-        return await prisma.category.findMany({
-          include: {
-            subcategories: true,
-          },
-        });
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
-
-    categoryById: async (_parent, { id }) => {
-      try {
-        return await prisma.category.findUnique({
-          where: { id: id },
-        });
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
+    categoryList: handlePromise(() => categoryService.list()),
+    categoryById: handlePromise((_p, { id }) => categoryService.byId(id)),
+    categoryByPath: handlePromise((_p, { path }) =>
+      categoryService.byPath(path)
+    ),
   },
 
   Mutation: {
-    createCategory: async (_parent, { input }) => {
-      try {
-        const existingCategory = await prisma.category.findUnique({
-          where: { name: input.name },
-        });
-        if (existingCategory) {
-          throw createError(400, "Category already exists");
-        }
-        return await prisma.category.create({
-          data: input,
-        });
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
-    updateCategoryById: async (_parent, { id, input }) => {
-      try {
-        return await prisma.category.update({
-          where: { id: id },
-          data: input,
-        });
-      } catch (errors) {
-        throw new Error(error);
-      }
-    },
+    createCategory: handlePromise(
+      verify.permission(PERMISSIONS.ADD_CATEGORY)((_p, { input }, ctx) => {
+        const data = validate(createCategorySchema, input);
+        return categoryService.create(data, ctx.user.name);
+      })
+    ),
 
-    removeCategoryById: async (_parent, { id }) => {
-      try {
-        await prisma.category.delete({
-          where: { id: id },
-        });
-        return { message: "Category removed successfully" };
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
+    updateCategoryById: handlePromise(
+      verify.permission(PERMISSIONS.EDIT_CATEGORY)((_p, { id, input }, ctx) => {
+        const data = validate(updateCategorySchema, input);
+        return categoryService.update(id, data, ctx.user.name);
+      })
+    ),
+
+    removeCategoryById: handlePromise(
+      verify.permission(PERMISSIONS.DELETE_CATEGORY)((_p, { id }) =>
+        categoryService.remove(id)
+      )
+    ),
   },
 };

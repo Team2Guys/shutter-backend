@@ -1,26 +1,32 @@
 import { mergeResolvers, mergeTypeDefs } from "@graphql-tools/merge";
-import { userTypeDefs, userResolvers } from "./user/index.js";
-import { commonTypeDefs } from "./common.typeDefs.js";
+
+import { commonTypeDefs, commonResolvers } from "./common.js";
 import { authTypeDefs, authResolvers } from "./auth/index.js";
+import { adminTypeDefs, adminResolvers } from "./admin/index.js";
 import { categoryTypeDefs, categoryResolvers } from "./category/index.js";
-import {
-  subcategoryTypeDefs,
-  subcategoryResolvers,
-} from "./subcategory/index.js";
-import { emailTypeDefs, emailResolvers } from "./email/index.js";
+import { productTypeDefs, productResolvers } from "./product/index.js";
+import { blogTypeDefs, blogResolvers } from "./blog/index.js";
+import { appointmentTypeDefs, appointmentResolvers } from "./appointment/index.js";
+import { contactTypeDefs, contactResolvers } from "./contact/index.js";
 
 export const typeDefs = mergeTypeDefs([
-  userTypeDefs,
   commonTypeDefs,
   authTypeDefs,
+  adminTypeDefs,
   categoryTypeDefs,
-  subcategoryTypeDefs,
-  emailTypeDefs,
+  productTypeDefs,
+  blogTypeDefs,
+  appointmentTypeDefs,
+  contactTypeDefs,
 ]);
+
 export const resolvers = mergeResolvers([
-  userResolvers,
+  commonResolvers,
   authResolvers,
+  adminResolvers,
   categoryResolvers,
-  subcategoryResolvers,
-  emailResolvers,
+  productResolvers,
+  blogResolvers,
+  appointmentResolvers,
+  contactResolvers,
 ]);

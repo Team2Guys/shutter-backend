@@ -1,41 +1,81 @@
 import dotenv from "dotenv";
 import { cleanEnv, str, port, email, url, testOnly } from "envalid";
 
-import { logger } from "#lib/index.js";
-
-const envFile = process.env.NODE_ENV;
-dotenv.config({ path: envFile });
+dotenv.config();
 
 const validators = {
-  PORT: port({ devDefault: 3000, desc: "Port number" }),
   NODE_ENV: str({
     choices: ["development", "test", "production"],
     default: "development",
     desc: "Environment type",
   }),
-  
-  BACKEND_URL: url({ desc: "Backend URL" }),
-  FRONTEND_URL: url({ desc: "Frontend URL" }),
+  PORT: port({ devDefault: 5000, desc: "Port number" }),
 
-  DATABASE_URL: url({ desc: "Database Connection String" }),
+  BACKEND_URL: url({ desc: "Backend URL" }),
+  FRONTEND_URL: url({ desc: "Public website URL" }),
+  DASHBOARD_URL: url({
+    devDefault: "http://localhost:3000",
+    desc: "Admin dashboard URL",
+  }),
+
+  DATABASE_URL: url({ desc: "Database connection string" }),
 
   JWT_SECRET: str({
     devDefault: testOnly("test-secret"),
     desc: "JWT secret key",
   }),
 
-  EMAIL_HOST: str({ desc: "Email host" }),
-  EMAIL_PORT: port({ desc: "Email port" }),
-  USER_EMAIL: email({ desc: "Email address" }),
-  USER_PASSWORD: str({ desc: "Email password" }),
+  // Mail (SMTP) configuration
+  EMAIL_HOST: str({ desc: "SMTP host" }),
+  EMAIL_PORT: port({ desc: "SMTP port" }),
+  USER_EMAIL: email({ desc: "SMTP / sender email address" }),
+  USER_PASSWORD: str({ desc: "SMTP password" }),
+
+  // Comma-separated company inboxes that receive appointment / contact alerts
+  NOTIFICATION_EMAILS: str({
+    desc: "Comma-separated company emails that receive new appointment/contact alerts",
+    default: "",
+  }),
+
+  // Dedicated sending account (appointment + contact mail is sent FROM here)
+  EMAIL_USER: str({ default: "", desc: "Sender email account (e.g. orders@cheapblinds.ae)" }),
+  EMAIL_PASS: str({ default: "", desc: "Password for EMAIL_USER" }),
+
+  // Company inboxes that receive new appointment/contact notifications
+  ORDER_MAIL1: str({ default: "", desc: "Notification inbox 1" }),
+  ORDER_MAIL2: str({ default: "", desc: "Notification inbox 2" }),
+  ORDER_MAIL3: str({ default: "", desc: "Notification inbox 3" }),
+
+  // Redis (optional — falls back to in-memory cache if unavailable)
+  REDIS_URL: str({ default: "", desc: "Redis connection string" }),
+
+  // Bootstrap super admin (created via `npm run db:seed`)
+  SUPER_ADMIN_NAME: str({ default: "Super Admin", desc: "Bootstrap super admin name" }),
+  SUPER_ADMIN_EMAIL: email({ desc: "Bootstrap super admin email" }),
+  SUPER_ADMIN_PASSWORD: str({ desc: "Bootstrap super admin password" }),
 };
 
 export const env = cleanEnv(process.env, validators, {
   reporter: ({ errors }) => {
     const invalidVars = Object.keys(errors);
     if (invalidVars.length > 0) {
-      logger.error(`Invalid ENV variables: ${invalidVars}`);
+      console.error(
+        `\nInvalid / missing environment variables:\n- ${invalidVars.join(
+          "\n- "
+        )}\n\nPlease set the above variables correctly in your .env file.\n`
+      );
       process.exit(1);
     }
   },
 });
+
+/** Strip stray quotes / commas / whitespace from an env value. */
+const cleanEmail = (v) => (v || "").replace(/^[\s",]+|[\s",]+$/g, "").trim();
+
+/** Company inboxes that receive appointment + contact notifications. */
+export const NOTIFICATION_RECIPIENTS = [
+  ...[env.ORDER_MAIL1, env.ORDER_MAIL2, env.ORDER_MAIL3],
+  ...env.NOTIFICATION_EMAILS.split(","),
+]
+  .map(cleanEmail)
+  .filter(Boolean);

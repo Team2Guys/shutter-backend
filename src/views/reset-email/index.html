@@ -3,51 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Password Reset</title>
+    <title>Reset your password</title>
   </head>
-  <body
-    style="
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-      padding: 20px;
-      margin: 0;
-    "
-  >
-    <div
-      style="
-        max-width: 500px;
-        background: #ffffff;
-        padding: 30px;
-        margin: 0 auto;
-        border-radius: 6px;
-        border: 1px solid #e0e0e0;
-      "
-    >
-      <h2 style="font-size: 20px; margin-bottom: 16px; color: #222">Reset Your Password</h2>
-      <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px; color: #555">
-        Click the button below to reset your password:
+  <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; color: #333; padding: 24px; margin: 0;">
+    <div style="max-width: 520px; background: #ffffff; padding: 32px; margin: 0 auto; border-radius: 8px; border: 1px solid #e6e6e6;">
+      <h2 style="font-size: 20px; margin: 0 0 16px; color: #1a1a1a;">Reset your password</h2>
+      <p style="font-size: 15px; line-height: 1.6; color: #555;">Hi ${name},</p>
+      <p style="font-size: 15px; line-height: 1.6; color: #555;">
+        We received a request to reset your Shutters dashboard password. Click the button below to choose a new one. This link expires in 15 minutes.
       </p>
-      <a
-        href="${FRONTEND_URL}/update-password?resetToken=${resetToken}"
-        style="
-          display: inline-block;
-          background-color: #4a90e2;
-          color: #ffffff;
-          text-decoration: none;
-          padding: 12px 20px;
-          border-radius: 4px;
-          font-size: 15px;
-          font-weight: bold;
-          margin-top: 10px;
-        "
-        >Reset Password</a
-      >
-      <p style="font-size: 15px; line-height: 1.6; margin-bottom: 16px; color: #555">
-        If you didn’t request this, no further action is needed.
+      <p style="text-align: center; margin: 28px 0;">
+        <a href="${DASHBOARD_URL}/dashboard/update-password?resetToken=${resetToken}"
+          style="display: inline-block; background-color: #f59e0b; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-size: 15px; font-weight: bold;">
+          Reset Password
+        </a>
       </p>
-      <div style="font-size: 13px; color: #888; margin-top: 30px; text-align: center">
-        This is an automated email. Please do not reply.<br />&copy; 2025 All rights reserved.
+      <p style="font-size: 13px; line-height: 1.6; color: #888;">
+        If the button doesn't work, copy and paste this link into your browser:<br />
+        ${DASHBOARD_URL}/dashboard/update-password?resetToken=${resetToken}
+      </p>
+      <p style="font-size: 14px; line-height: 1.6; color: #555;">If you didn't request this, you can safely ignore this email.</p>
+      <div style="font-size: 12px; color: #999; margin-top: 28px; text-align: center; border-top: 1px solid #eee; padding-top: 16px;">
+        This is an automated email. Please do not reply.<br />&copy; Shutters. All rights reserved.
       </div>
     </div>
   </body>

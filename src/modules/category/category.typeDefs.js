@@ -1,26 +1,63 @@
 import gql from "graphql-tag";
 
 export const categoryTypeDefs = gql`
-  input CreateCategory {
+  type Category {
+    id: ID!
     name: String!
-    slug: String!
     description: String!
+    breadcrumb: String!
+    bannerImage: JSON
+    path: String!
+    posterImage: JSON
+    metaTitle: String!
+    metaDescription: String!
+    canonicalUrl: String!
+    seoSchema: String
+    lastEditedBy: String!
+    status: ContentStatus!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    products: [Product!]
+    blogs: [Blog!]
   }
 
-  input UpdateCategory {
+  input CreateCategoryInput {
     name: String!
-    slug: String!
     description: String!
+    breadcrumb: String!
+    bannerImage: JSON
+    path: String
+    posterImage: JSON
+    metaTitle: String!
+    metaDescription: String!
+    canonicalUrl: String!
+    seoSchema: String
+    status: ContentStatus
+  }
+
+  input UpdateCategoryInput {
+    name: String
+    description: String
+    breadcrumb: String
+    bannerImage: JSON
+    path: String
+    posterImage: JSON
+    metaTitle: String
+    metaDescription: String
+    canonicalUrl: String
+    seoSchema: String
+    status: ContentStatus
   }
 
   type Query {
-    category: [Category!]!
+    categoryList: [Category!]!
     categoryById(id: ID!): Category
+    categoryByPath(path: String!): Category
   }
 
   type Mutation {
-    createCategory(input: CreateCategory!): Category
-    updateCategoryById(id: ID!, input: UpdateCategory!): Category
+    createCategory(input: CreateCategoryInput!): Category
+    updateCategoryById(id: ID!, input: UpdateCategoryInput!): Category
     removeCategoryById(id: ID!): GenericResponse
   }
 `;

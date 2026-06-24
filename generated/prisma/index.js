@@ -93,13 +93,14 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.AdminScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
   password: 'password',
   role: 'role',
-  isEmailVerified: 'isEmailVerified',
+  permissions: 'permissions',
+  lastEditedBy: 'lastEditedBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -107,20 +108,89 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug',
   description: 'description',
+  breadcrumb: 'breadcrumb',
+  bannerImage: 'bannerImage',
+  path: 'path',
+  posterImage: 'posterImage',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.SubcategoryScalarFieldEnum = {
+exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   categoryId: 'categoryId',
   name: 'name',
-  slug: 'slug',
   description: 'description',
+  breadcrumb: 'breadcrumb',
+  bannerImage: 'bannerImage',
+  path: 'path',
+  posterImage: 'posterImage',
+  firstImage: 'firstImage',
+  firstHeadinf: 'firstHeadinf',
+  firstDescription: 'firstDescription',
+  secondImage: 'secondImage',
+  secondHeading: 'secondHeading',
+  secondDescription: 'secondDescription',
+  productImages: 'productImages',
+  faq: 'faq',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ContactScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  whatsapp: 'whatsapp',
+  message: 'message',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  title: 'title',
+  path: 'path',
+  posterImage: 'posterImage',
+  bannerImage: 'bannerImage',
+  content: 'content',
+  metaTitle: 'metaTitle',
+  metaDescription: 'metaDescription',
+  canonicalUrl: 'canonicalUrl',
+  imageAltText: 'imageAltText',
+  seoSchema: 'seoSchema',
+  lastEditedBy: 'lastEditedBy',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  whatsapp: 'whatsapp',
+  availableTime: 'availableTime',
+  emirate: 'emirate',
+  area: 'area',
+  message: 'message',
+  shutterTypes: 'shutterTypes',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -128,19 +198,43 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-exports.Role = exports.$Enums.Role = {
-  USER: 'USER',
-  ADMIN: 'ADMIN'
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.AdminRole = exports.$Enums.AdminRole = {
+  ADMIN: 'ADMIN',
+  SUPER_ADMIN: 'SUPER_ADMIN'
+};
+
+exports.ContentStatus = exports.$Enums.ContentStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
 };
 
 exports.Prisma.ModelName = {
-  User: 'User',
+  Admin: 'Admin',
   Category: 'Category',
-  Subcategory: 'Subcategory'
+  Product: 'Product',
+  Contact: 'Contact',
+  Blog: 'Blog',
+  Appointment: 'Appointment'
 };
 /**
  * Create the Client
@@ -150,10 +244,10 @@ const config = {
   "clientVersion": "7.1.0",
   "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nmodel User {\n  id              String   @id @default(uuid())\n  name            String\n  email           String   @unique\n  password        String\n  role            Role     @default(USER)\n  isEmailVerified Boolean  @default(false)\n  createdAt       DateTime @default(now())\n  updatedAt       DateTime @updatedAt\n}\n\nmodel Category {\n  id            String        @id @default(uuid()) @db.Uuid\n  name          String        @unique\n  slug          String        @unique\n  description   String\n  subcategories Subcategory[] @relation(name: \"CategorySubcategories\")\n  createdAt     DateTime      @default(now())\n  updatedAt     DateTime      @updatedAt\n}\n\nmodel Subcategory {\n  id          String   @id @default(uuid()) @db.Uuid\n  categoryId  String   @db.Uuid\n  name        String   @unique\n  slug        String\n  description String\n  category    Category @relation(name: \"CategorySubcategories\", fields: [categoryId], references: [id], onDelete: Cascade)\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n}\n"
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum AdminRole {\n  ADMIN\n  SUPER_ADMIN\n}\n\nenum ContentStatus {\n  DRAFT\n  PUBLISHED\n  ARCHIVED\n}\n\nmodel Admin {\n  id String @id @default(uuid()) @db.Uuid\n\n  name         String\n  email        String    @unique\n  password     String\n  role         AdminRole @default(ADMIN)\n  permissions  String[]  @default([]) // Store permissions as an array of strings\n  lastEditedBy String\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Category {\n  // Primary Key\n  id String @id @default(uuid()) @db.Uuid\n\n  // Core fields\n  name            String        @unique\n  description     String        @db.Text()\n  breadcrumb      String\n  bannerImage     Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/1440x500?text=Banner+Image\\\"}\")\n  path            String        @unique\n  posterImage     Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/600x600?text=Product+Image\\\"}\")\n  metaTitle       String\n  metaDescription String\n  canonicalUrl    String\n  seoSchema       String?       @db.Text()\n  lastEditedBy    String\n  status          ContentStatus @default(PUBLISHED)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  products Product[] @relation(name: \"CategoryProducts\")\n  blogs    Blog[]    @relation(name: \"CategoryBlogs\")\n}\n\nmodel Product {\n  id                String        @id @default(uuid()) @db.Uuid\n  categoryId        String        @db.Uuid\n  name              String\n  description       String        @db.Text()\n  breadcrumb        String\n  bannerImage       Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/1440x500?text=Banner+Image\\\"}\")\n  path              String        @unique\n  posterImage       Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/600x600?text=Product+Image\\\"}\")\n  firstImage        Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/600x600?text=First+Image\\\"}\")\n  firstHeadinf      String\n  firstDescription  String\n  secondImage       Json          @default(\"{\\\"imageUrl\\\": \\\"https://placehold.co/600x600?text=Second+Image\\\"}\")\n  secondHeading     String\n  secondDescription String\n  productImages     Json[]        @default([])\n  faq               Json[]        @default([])\n  metaTitle         String?       @db.Text()\n  metaDescription   String?       @db.Text()\n  canonicalUrl      String?\n  seoSchema         String?       @db.Text()\n  lastEditedBy      String\n  status            ContentStatus @default(PUBLISHED)\n\n  // Timestamps\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relations\n  category Category @relation(name: \"CategoryProducts\", fields: [categoryId], references: [id], onDelete: Restrict)\n}\n\nmodel Contact {\n  id        String   @id @default(uuid()) @db.Uuid\n  name      String\n  email     String\n  phone     String\n  whatsapp  String\n  message   String\n  createdAt DateTime @default(now())\n}\n\nmodel Blog {\n  id          String @id @default(uuid()) @db.Uuid\n  categoryId  String @db.Uuid\n  title       String\n  path        String @unique\n  posterImage Json\n  bannerImage Json\n  content     String @db.Text()\n\n  // SEO Fields\n  metaTitle       String? @db.Text()\n  metaDescription String? @db.Text()\n  canonicalUrl    String?\n  imageAltText    String?\n  seoSchema       String? @db.Text()\n\n  // Common Fields\n  lastEditedBy String\n  status       ContentStatus @default(PUBLISHED)\n\n  // Timestamps\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  // Relations\n  category Category @relation(name: \"CategoryBlogs\", fields: [categoryId], references: [id], onDelete: Restrict)\n}\n\nmodel Appointment {\n  id            String   @id @default(uuid()) @db.Uuid\n  name          String\n  email         String\n  phone         String\n  whatsapp      String?\n  availableTime String\n  emirate       String\n  area          String\n  message       String?  @db.Text()\n  shutterTypes  String[]\n  createdAt     DateTime @default(now())\n}\n"
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"Role\"},{\"name\":\"isEmailVerified\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"subcategories\",\"kind\":\"object\",\"type\":\"Subcategory\",\"relationName\":\"CategorySubcategories\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Subcategory\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"slug\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategorySubcategories\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Admin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"enum\",\"type\":\"AdminRole\"},{\"name\":\"permissions\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastEditedBy\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Category\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"breadcrumb\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bannerImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"path\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"posterImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"metaTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"metaDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canonicalUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"seoSchema\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastEditedBy\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ContentStatus\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"Product\",\"relationName\":\"CategoryProducts\"},{\"name\":\"blogs\",\"kind\":\"object\",\"type\":\"Blog\",\"relationName\":\"CategoryBlogs\"}],\"dbName\":null},\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"breadcrumb\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bannerImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"path\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"posterImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"firstImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"firstHeadinf\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"secondImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"secondHeading\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"secondDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"productImages\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"faq\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"metaTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"metaDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canonicalUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"seoSchema\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastEditedBy\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ContentStatus\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryProducts\"}],\"dbName\":null},\"Contact\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"whatsapp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"message\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Blog\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"categoryId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"path\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"posterImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"bannerImage\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"metaTitle\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"metaDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canonicalUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageAltText\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"seoSchema\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lastEditedBy\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"enum\",\"type\":\"ContentStatus\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"category\",\"kind\":\"object\",\"type\":\"Category\",\"relationName\":\"CategoryBlogs\"}],\"dbName\":null},\"Appointment\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"whatsapp\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"availableTime\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"emirate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"area\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"message\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"shutterTypes\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.compilerWasm = {
       getRuntime: async () => require('./query_compiler_bg.js'),
