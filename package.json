@@ -21,7 +21,7 @@
   "license": "ISC",
   "description": "Shutters backend - GraphQL API (Express + Apollo + Prisma)",
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   },
   "dependencies": {
     "@apollo/server": "^5.2.0",
