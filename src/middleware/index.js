@@ -45,6 +45,10 @@ const buildContext = async ({ req, res }) => {
 };
 
 export const setupMiddleware = (app, apolloServer) => {
+  // Behind Vercel's proxy every request carries X-Forwarded-For; trust the
+  // first proxy hop so req.ip is correct and express-rate-limit doesn't error.
+  app.set("trust proxy", 1);
+
   app.use(helmet()); // secure HTTP headers
   app.use(compression()); // gzip responses
   app.use(cookieParser()); // parse cookies
