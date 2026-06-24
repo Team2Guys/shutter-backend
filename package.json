@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate",
     "db:studio": "npx prisma studio",
     "db:init": "npx prisma init",
     "db:push": "npx prisma db push",
@@ -18,6 +20,9 @@
   "author": "",
   "license": "ISC",
   "description": "Shutters backend - GraphQL API (Express + Apollo + Prisma)",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@apollo/server": "^5.2.0",
     "@as-integrations/express5": "^1.1.2",

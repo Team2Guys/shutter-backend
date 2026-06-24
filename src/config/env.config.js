@@ -9,7 +9,9 @@ const validators = {
     default: "development",
     desc: "Environment type",
   }),
-  PORT: port({ devDefault: 5000, desc: "Port number" }),
+  // Defaulted (not devDefault): serverless platforms like Vercel never bind a
+  // port, so this must not become a required var in production.
+  PORT: port({ default: 5000, desc: "Port number" }),
 
   BACKEND_URL: url({ desc: "Backend URL" }),
   FRONTEND_URL: url({ desc: "Public website URL" }),
@@ -34,6 +36,10 @@ const validators = {
   // Dedicated sending account (appointment + contact mail is sent FROM here)
   EMAIL_USER: str({ default: "", desc: "Sender email account (e.g. orders@cheapblinds.ae)" }),
   EMAIL_PASS: str({ default: "", desc: "Password for EMAIL_USER" }),
+
+  // SMTP mailbox login (preferred transporter credentials)
+  ADMIN_MAIL: str({ default: "", desc: "SMTP mailbox login email" }),
+  ADMIN_PASSWORD: str({ default: "", desc: "SMTP mailbox login password" }),
 
   // Company inboxes that receive new appointment/contact notifications
   ORDER_MAIL1: str({ default: "", desc: "Notification inbox 1" }),

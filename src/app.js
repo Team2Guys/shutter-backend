@@ -1,29 +1,17 @@
-import express from "express";
-
 import { env } from "#config/index.js";
-import { apolloServer } from "./apollo/server.js";
-import { setupMiddleware } from "#middleware/index.js";
-import { connectDatabase, logger, getServerInfo } from "#lib/index.js";
+import { app, init } from "./server.js";
+import { logger, getServerInfo } from "#lib/index.js";
 
 const { PORT } = env;
-const app = express();
 
-(async function main() {
-  try {
-    await connectDatabase();
-    await apolloServer.start();
-
-    setupMiddleware(app, apolloServer);
-
-    app.get("/", (_req, res) =>
-      res.json({ status: "OK", service: "shutter-backend" })
-    );
-
-    app.listen(PORT, () => logger.info(getServerInfo()));
-  } catch (error) {
+// Local / long-running process entry point (`npm start`, `npm run dev`).
+// On Vercel the app is served via the serverless handler in `api/index.js`
+// and this file is never executed.
+init()
+  .then(() => app.listen(PORT, () => logger.info(getServerInfo())))
+  .catch((error) => {
     logger.error(`Failed to start server: ${error.message}`);
     process.exit(1);
-  }
-})();
+  });
 
 export default app;

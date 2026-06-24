@@ -5,7 +5,6 @@ import {
   prisma,
   bcryptUtils,
   tokenUtils,
-  sendEmail,
   validate,
   verify,
   handlePromise,
@@ -20,7 +19,6 @@ import {
 
 const {
   NODE_ENV,
-  DASHBOARD_URL,
   SUPER_ADMIN_NAME,
   SUPER_ADMIN_EMAIL,
   SUPER_ADMIN_PASSWORD,
@@ -110,22 +108,7 @@ export const authResolvers = {
         };
       }
 
-      const resetToken = tokenUtils.generate(
-        { id: admin.id },
-        "passwordResetToken"
-      );
-
-      try {
-        await sendEmail("reset-email", {
-          to: admin.email,
-          subject: "Reset your password",
-          name: admin.name,
-          DASHBOARD_URL,
-          resetToken,
-        });
-      } catch (error) {
-        logger.error(`[auth] Failed to send reset email: ${error.message}`);
-      }
+      tokenUtils.generate({ id: admin.id }, "passwordResetToken");
 
       return {
         success: true,

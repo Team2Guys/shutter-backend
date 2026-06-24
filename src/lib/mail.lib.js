@@ -11,11 +11,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const VIEWS_DIRECTORY = path.join(__dirname, "../views");
-const { NODE_ENV, EMAIL_USER, EMAIL_PASS, USER_EMAIL, USER_PASSWORD } = env;
+const {
+  NODE_ENV,
+  ADMIN_MAIL,
+  ADMIN_PASSWORD,
+  EMAIL_USER,
+  EMAIL_PASS,
+  USER_EMAIL,
+  USER_PASSWORD,
+} = env;
 
-// Prefer the dedicated sending account; fall back to the generic SMTP account.
-const SENDER_EMAIL = EMAIL_USER || USER_EMAIL;
-const SENDER_PASS = EMAIL_PASS || USER_PASSWORD;
+// Prefer the dedicated mailbox login (ADMIN_*), then the sending account,
+// then fall back to the generic SMTP account.
+const SENDER_EMAIL = ADMIN_MAIL || EMAIL_USER || USER_EMAIL;
+const SENDER_PASS = ADMIN_PASSWORD || EMAIL_PASS || USER_PASSWORD;
 
 const createTransporter = () => {
   const transporter = nodemailer.createTransport({
@@ -40,7 +49,6 @@ const transporter = createTransporter();
 
 // HTML email templates available under src/views/<type>/index.html
 const SUPPORTED_HTML_TEMPLATES = [
-  "reset-email",
   "appointment-customer",
   "appointment-admin",
   "contact-customer",
