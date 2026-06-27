@@ -3758,8 +3758,10 @@ export namespace Prisma {
     breadcrumb: string | null
     path: string | null
     firstHeading: string | null
+    firstSubTitle: string | null
     firstDescription: string | null
     secondHeading: string | null
+    secondSubTitle: string | null
     secondDescription: string | null
     imageHeading: string | null
     metaTitle: string | null
@@ -3780,8 +3782,10 @@ export namespace Prisma {
     breadcrumb: string | null
     path: string | null
     firstHeading: string | null
+    firstSubTitle: string | null
     firstDescription: string | null
     secondHeading: string | null
+    secondSubTitle: string | null
     secondDescription: string | null
     imageHeading: string | null
     metaTitle: string | null
@@ -3805,9 +3809,11 @@ export namespace Prisma {
     posterImage: number
     firstImage: number
     firstHeading: number
+    firstSubTitle: number
     firstDescription: number
     secondImage: number
     secondHeading: number
+    secondSubTitle: number
     secondDescription: number
     imageHeading: number
     productImages: number
@@ -3832,8 +3838,10 @@ export namespace Prisma {
     breadcrumb?: true
     path?: true
     firstHeading?: true
+    firstSubTitle?: true
     firstDescription?: true
     secondHeading?: true
+    secondSubTitle?: true
     secondDescription?: true
     imageHeading?: true
     metaTitle?: true
@@ -3854,8 +3862,10 @@ export namespace Prisma {
     breadcrumb?: true
     path?: true
     firstHeading?: true
+    firstSubTitle?: true
     firstDescription?: true
     secondHeading?: true
+    secondSubTitle?: true
     secondDescription?: true
     imageHeading?: true
     metaTitle?: true
@@ -3879,9 +3889,11 @@ export namespace Prisma {
     posterImage?: true
     firstImage?: true
     firstHeading?: true
+    firstSubTitle?: true
     firstDescription?: true
     secondImage?: true
     secondHeading?: true
+    secondSubTitle?: true
     secondDescription?: true
     imageHeading?: true
     productImages?: true
@@ -3980,9 +3992,11 @@ export namespace Prisma {
     posterImage: JsonValue
     firstImage: JsonValue
     firstHeading: string
+    firstSubTitle: string | null
     firstDescription: string
     secondImage: JsonValue
     secondHeading: string
+    secondSubTitle: string | null
     secondDescription: string
     imageHeading: string | null
     productImages: JsonValue[]
@@ -4025,9 +4039,11 @@ export namespace Prisma {
     posterImage?: boolean
     firstImage?: boolean
     firstHeading?: boolean
+    firstSubTitle?: boolean
     firstDescription?: boolean
     secondImage?: boolean
     secondHeading?: boolean
+    secondSubTitle?: boolean
     secondDescription?: boolean
     imageHeading?: boolean
     productImages?: boolean
@@ -4054,9 +4070,11 @@ export namespace Prisma {
     posterImage?: boolean
     firstImage?: boolean
     firstHeading?: boolean
+    firstSubTitle?: boolean
     firstDescription?: boolean
     secondImage?: boolean
     secondHeading?: boolean
+    secondSubTitle?: boolean
     secondDescription?: boolean
     imageHeading?: boolean
     productImages?: boolean
@@ -4083,9 +4101,11 @@ export namespace Prisma {
     posterImage?: boolean
     firstImage?: boolean
     firstHeading?: boolean
+    firstSubTitle?: boolean
     firstDescription?: boolean
     secondImage?: boolean
     secondHeading?: boolean
+    secondSubTitle?: boolean
     secondDescription?: boolean
     imageHeading?: boolean
     productImages?: boolean
@@ -4112,9 +4132,11 @@ export namespace Prisma {
     posterImage?: boolean
     firstImage?: boolean
     firstHeading?: boolean
+    firstSubTitle?: boolean
     firstDescription?: boolean
     secondImage?: boolean
     secondHeading?: boolean
+    secondSubTitle?: boolean
     secondDescription?: boolean
     imageHeading?: boolean
     productImages?: boolean
@@ -4129,7 +4151,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "firstImage" | "firstHeading" | "firstDescription" | "secondImage" | "secondHeading" | "secondDescription" | "imageHeading" | "productImages" | "faq" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "firstImage" | "firstHeading" | "firstSubTitle" | "firstDescription" | "secondImage" | "secondHeading" | "secondSubTitle" | "secondDescription" | "imageHeading" | "productImages" | "faq" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }
@@ -4156,9 +4178,11 @@ export namespace Prisma {
       posterImage: Prisma.JsonValue
       firstImage: Prisma.JsonValue
       firstHeading: string
+      firstSubTitle: string | null
       firstDescription: string
       secondImage: Prisma.JsonValue
       secondHeading: string
+      secondSubTitle: string | null
       secondDescription: string
       imageHeading: string | null
       productImages: Prisma.JsonValue[]
@@ -4605,9 +4629,11 @@ export namespace Prisma {
     readonly posterImage: FieldRef<"Product", 'Json'>
     readonly firstImage: FieldRef<"Product", 'Json'>
     readonly firstHeading: FieldRef<"Product", 'String'>
+    readonly firstSubTitle: FieldRef<"Product", 'String'>
     readonly firstDescription: FieldRef<"Product", 'String'>
     readonly secondImage: FieldRef<"Product", 'Json'>
     readonly secondHeading: FieldRef<"Product", 'String'>
+    readonly secondSubTitle: FieldRef<"Product", 'String'>
     readonly secondDescription: FieldRef<"Product", 'String'>
     readonly imageHeading: FieldRef<"Product", 'String'>
     readonly productImages: FieldRef<"Product", 'Json[]'>
@@ -9459,9 +9485,11 @@ export namespace Prisma {
     posterImage: 'posterImage',
     firstImage: 'firstImage',
     firstHeading: 'firstHeading',
+    firstSubTitle: 'firstSubTitle',
     firstDescription: 'firstDescription',
     secondImage: 'secondImage',
     secondHeading: 'secondHeading',
+    secondSubTitle: 'secondSubTitle',
     secondDescription: 'secondDescription',
     imageHeading: 'imageHeading',
     productImages: 'productImages',
@@ -9893,9 +9921,11 @@ export namespace Prisma {
     posterImage?: JsonFilter<"Product">
     firstImage?: JsonFilter<"Product">
     firstHeading?: StringFilter<"Product"> | string
+    firstSubTitle?: StringNullableFilter<"Product"> | string | null
     firstDescription?: StringFilter<"Product"> | string
     secondImage?: JsonFilter<"Product">
     secondHeading?: StringFilter<"Product"> | string
+    secondSubTitle?: StringNullableFilter<"Product"> | string | null
     secondDescription?: StringFilter<"Product"> | string
     imageHeading?: StringNullableFilter<"Product"> | string | null
     productImages?: JsonNullableListFilter<"Product">
@@ -9922,9 +9952,11 @@ export namespace Prisma {
     posterImage?: SortOrder
     firstImage?: SortOrder
     firstHeading?: SortOrder
+    firstSubTitle?: SortOrderInput | SortOrder
     firstDescription?: SortOrder
     secondImage?: SortOrder
     secondHeading?: SortOrder
+    secondSubTitle?: SortOrderInput | SortOrder
     secondDescription?: SortOrder
     imageHeading?: SortOrderInput | SortOrder
     productImages?: SortOrder
@@ -9954,9 +9986,11 @@ export namespace Prisma {
     posterImage?: JsonFilter<"Product">
     firstImage?: JsonFilter<"Product">
     firstHeading?: StringFilter<"Product"> | string
+    firstSubTitle?: StringNullableFilter<"Product"> | string | null
     firstDescription?: StringFilter<"Product"> | string
     secondImage?: JsonFilter<"Product">
     secondHeading?: StringFilter<"Product"> | string
+    secondSubTitle?: StringNullableFilter<"Product"> | string | null
     secondDescription?: StringFilter<"Product"> | string
     imageHeading?: StringNullableFilter<"Product"> | string | null
     productImages?: JsonNullableListFilter<"Product">
@@ -9983,9 +10017,11 @@ export namespace Prisma {
     posterImage?: SortOrder
     firstImage?: SortOrder
     firstHeading?: SortOrder
+    firstSubTitle?: SortOrderInput | SortOrder
     firstDescription?: SortOrder
     secondImage?: SortOrder
     secondHeading?: SortOrder
+    secondSubTitle?: SortOrderInput | SortOrder
     secondDescription?: SortOrder
     imageHeading?: SortOrderInput | SortOrder
     productImages?: SortOrder
@@ -10017,9 +10053,11 @@ export namespace Prisma {
     posterImage?: JsonWithAggregatesFilter<"Product">
     firstImage?: JsonWithAggregatesFilter<"Product">
     firstHeading?: StringWithAggregatesFilter<"Product"> | string
+    firstSubTitle?: StringNullableWithAggregatesFilter<"Product"> | string | null
     firstDescription?: StringWithAggregatesFilter<"Product"> | string
     secondImage?: JsonWithAggregatesFilter<"Product">
     secondHeading?: StringWithAggregatesFilter<"Product"> | string
+    secondSubTitle?: StringNullableWithAggregatesFilter<"Product"> | string | null
     secondDescription?: StringWithAggregatesFilter<"Product"> | string
     imageHeading?: StringNullableWithAggregatesFilter<"Product"> | string | null
     productImages?: JsonNullableListFilter<"Product">
@@ -10590,9 +10628,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -10619,9 +10659,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -10646,9 +10688,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -10675,9 +10719,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -10703,9 +10749,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -10730,9 +10778,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -10758,9 +10808,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -11507,9 +11559,11 @@ export namespace Prisma {
     posterImage?: SortOrder
     firstImage?: SortOrder
     firstHeading?: SortOrder
+    firstSubTitle?: SortOrder
     firstDescription?: SortOrder
     secondImage?: SortOrder
     secondHeading?: SortOrder
+    secondSubTitle?: SortOrder
     secondDescription?: SortOrder
     imageHeading?: SortOrder
     productImages?: SortOrder
@@ -11532,8 +11586,10 @@ export namespace Prisma {
     breadcrumb?: SortOrder
     path?: SortOrder
     firstHeading?: SortOrder
+    firstSubTitle?: SortOrder
     firstDescription?: SortOrder
     secondHeading?: SortOrder
+    secondSubTitle?: SortOrder
     secondDescription?: SortOrder
     imageHeading?: SortOrder
     metaTitle?: SortOrder
@@ -11554,8 +11610,10 @@ export namespace Prisma {
     breadcrumb?: SortOrder
     path?: SortOrder
     firstHeading?: SortOrder
+    firstSubTitle?: SortOrder
     firstDescription?: SortOrder
     secondHeading?: SortOrder
+    secondSubTitle?: SortOrder
     secondDescription?: SortOrder
     imageHeading?: SortOrder
     metaTitle?: SortOrder
@@ -12166,9 +12224,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -12193,9 +12253,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -12296,9 +12358,11 @@ export namespace Prisma {
     posterImage?: JsonFilter<"Product">
     firstImage?: JsonFilter<"Product">
     firstHeading?: StringFilter<"Product"> | string
+    firstSubTitle?: StringNullableFilter<"Product"> | string | null
     firstDescription?: StringFilter<"Product"> | string
     secondImage?: JsonFilter<"Product">
     secondHeading?: StringFilter<"Product"> | string
+    secondSubTitle?: StringNullableFilter<"Product"> | string | null
     secondDescription?: StringFilter<"Product"> | string
     imageHeading?: StringNullableFilter<"Product"> | string | null
     productImages?: JsonNullableListFilter<"Product">
@@ -12545,9 +12609,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading: string
+    firstSubTitle?: string | null
     firstDescription: string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading: string
+    secondSubTitle?: string | null
     secondDescription: string
     imageHeading?: string | null
     productImages?: ProductCreateproductImagesInput | InputJsonValue[]
@@ -12590,9 +12656,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -12617,9 +12685,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]
@@ -12644,9 +12714,11 @@ export namespace Prisma {
     posterImage?: JsonNullValueInput | InputJsonValue
     firstImage?: JsonNullValueInput | InputJsonValue
     firstHeading?: StringFieldUpdateOperationsInput | string
+    firstSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     firstDescription?: StringFieldUpdateOperationsInput | string
     secondImage?: JsonNullValueInput | InputJsonValue
     secondHeading?: StringFieldUpdateOperationsInput | string
+    secondSubTitle?: NullableStringFieldUpdateOperationsInput | string | null
     secondDescription?: StringFieldUpdateOperationsInput | string
     imageHeading?: NullableStringFieldUpdateOperationsInput | string | null
     productImages?: ProductUpdateproductImagesInput | InputJsonValue[]

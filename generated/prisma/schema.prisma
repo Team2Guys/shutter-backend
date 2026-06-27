@@ -68,9 +68,11 @@ model Product {
   posterImage       Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Product+Image\"}")
   firstImage        Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=First+Image\"}")
   firstHeading      String
+  firstSubTitle     String?
   firstDescription  String
   secondImage       Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Second+Image\"}")
   secondHeading     String
+  secondSubTitle    String?
   secondDescription String
   imageHeading      String?
   productImages     Json[]        @default([])
