@@ -51,7 +51,7 @@ CREATE TABLE "Product" (
     "path" TEXT NOT NULL,
     "posterImage" JSONB NOT NULL DEFAULT '{"imageUrl": "https://placehold.co/600x600?text=Product+Image"}',
     "firstImage" JSONB NOT NULL DEFAULT '{"imageUrl": "https://placehold.co/600x600?text=First+Image"}',
-    "firstHeadinf" TEXT NOT NULL,
+    "firstHeading" TEXT NOT NULL,
     "firstDescription" TEXT NOT NULL,
     "secondImage" JSONB NOT NULL DEFAULT '{"imageUrl": "https://placehold.co/600x600?text=Second+Image"}',
     "secondHeading" TEXT NOT NULL,

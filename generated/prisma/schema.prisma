@@ -67,11 +67,12 @@ model Product {
   path              String        @unique
   posterImage       Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Product+Image\"}")
   firstImage        Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=First+Image\"}")
-  firstHeadinf      String
+  firstHeading      String
   firstDescription  String
   secondImage       Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Second+Image\"}")
   secondHeading     String
   secondDescription String
+  imageHeading      String?
   productImages     Json[]        @default([])
   faq               Json[]        @default([])
   metaTitle         String?       @db.Text()

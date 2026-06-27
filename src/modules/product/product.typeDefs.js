@@ -11,11 +11,12 @@ export const productTypeDefs = gql`
     path: String!
     posterImage: JSON
     firstImage: JSON
-    firstHeadinf: String!
+    firstHeading: String!
     firstDescription: String!
     secondImage: JSON
     secondHeading: String!
     secondDescription: String!
+    imageHeading: String
     productImages: [JSON!]
     faq: [JSON!]
     metaTitle: String
@@ -38,11 +39,12 @@ export const productTypeDefs = gql`
     path: String
     posterImage: JSON
     firstImage: JSON
-    firstHeadinf: String!
+    firstHeading: String!
     firstDescription: String!
     secondImage: JSON
     secondHeading: String!
     secondDescription: String!
+    imageHeading: String
     productImages: [JSON!]
     faq: [JSON!]
     metaTitle: String
@@ -61,11 +63,12 @@ export const productTypeDefs = gql`
     path: String
     posterImage: JSON
     firstImage: JSON
-    firstHeadinf: String
+    firstHeading: String
     firstDescription: String
     secondImage: JSON
     secondHeading: String
     secondDescription: String
+    imageHeading: String
     productImages: [JSON!]
     faq: [JSON!]
     metaTitle: String
