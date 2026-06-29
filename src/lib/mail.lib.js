@@ -23,8 +23,8 @@ const {
 
 // Prefer the dedicated mailbox login (ADMIN_*), then the sending account,
 // then fall back to the generic SMTP account.
-const SENDER_EMAIL = ADMIN_MAIL || EMAIL_USER || USER_EMAIL;
-const SENDER_PASS = ADMIN_PASSWORD || EMAIL_PASS || USER_PASSWORD;
+const SENDER_EMAIL = EMAIL_USER || ADMIN_MAIL || USER_EMAIL;
+const SENDER_PASS = EMAIL_PASS || ADMIN_PASSWORD || USER_PASSWORD;
 
 const createTransporter = () => {
   const transporter = nodemailer.createTransport({

@@ -34,7 +34,7 @@ const validators = {
   USER_PASSWORD: str({ desc: "SMTP password" }),
 
   // Dedicated sending account (appointment + contact mail is sent FROM here)
-  EMAIL_USER: str({ default: "", desc: "Sender email account (e.g. orders@cheapblinds.ae)" }),
+  EMAIL_USER: str({ default: "", desc: "Sender email account (e.g. cs@shutters.ae)" }),
   EMAIL_PASS: str({ default: "", desc: "Password for EMAIL_USER" }),
 
   // SMTP mailbox login (preferred transporter credentials)
@@ -45,6 +45,7 @@ const validators = {
   ORDER_MAIL1: str({ default: "", desc: "Notification inbox 1" }),
   ORDER_MAIL2: str({ default: "", desc: "Notification inbox 2" }),
   ORDER_MAIL3: str({ default: "", desc: "Notification inbox 3" }),
+  ORDER_MAIL4: str({ default: "", desc: "Notification inbox 4" }),
 
   // Redis (optional — falls back to in-memory cache if unavailable)
   REDIS_URL: str({ default: "", desc: "Redis connection string" }),
@@ -77,6 +78,7 @@ export const NOTIFICATION_RECIPIENTS = [
   env.ORDER_MAIL1,
   env.ORDER_MAIL2,
   env.ORDER_MAIL3,
+  env.ORDER_MAIL4,
 ]
   .map(cleanEmail)
   .filter(Boolean);
