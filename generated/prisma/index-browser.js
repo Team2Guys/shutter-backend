@@ -235,6 +235,16 @@ exports.Prisma.TestimonialScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RedirectScalarFieldEnum = {
+  id: 'id',
+  fromPath: 'fromPath',
+  toPath: 'toPath',
+  statusCode: 'statusCode',
+  lastEditedBy: 'lastEditedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -277,7 +287,8 @@ exports.Prisma.ModelName = {
   Contact: 'Contact',
   Blog: 'Blog',
   Appointment: 'Appointment',
-  Testimonial: 'Testimonial'
+  Testimonial: 'Testimonial',
+  Redirect: 'Redirect'
 };
 
 /**

@@ -48,6 +48,11 @@ export type Appointment = $Result.DefaultSelection<Prisma.$AppointmentPayload>
  * 
  */
 export type Testimonial = $Result.DefaultSelection<Prisma.$TestimonialPayload>
+/**
+ * Model Redirect
+ * 
+ */
+export type Redirect = $Result.DefaultSelection<Prisma.$RedirectPayload>
 
 /**
  * Enums
@@ -265,6 +270,16 @@ export class PrismaClient<
     * ```
     */
   get testimonial(): Prisma.TestimonialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.redirect`: Exposes CRUD operations for the **Redirect** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Redirects
+    * const redirects = await prisma.redirect.findMany()
+    * ```
+    */
+  get redirect(): Prisma.RedirectDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -705,7 +720,8 @@ export namespace Prisma {
     Contact: 'Contact',
     Blog: 'Blog',
     Appointment: 'Appointment',
-    Testimonial: 'Testimonial'
+    Testimonial: 'Testimonial',
+    Redirect: 'Redirect'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -721,7 +737,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "admin" | "category" | "product" | "contact" | "blog" | "appointment" | "testimonial"
+      modelProps: "admin" | "category" | "product" | "contact" | "blog" | "appointment" | "testimonial" | "redirect"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1243,6 +1259,80 @@ export namespace Prisma {
           }
         }
       }
+      Redirect: {
+        payload: Prisma.$RedirectPayload<ExtArgs>
+        fields: Prisma.RedirectFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RedirectFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RedirectFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          findFirst: {
+            args: Prisma.RedirectFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RedirectFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          findMany: {
+            args: Prisma.RedirectFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+          }
+          create: {
+            args: Prisma.RedirectCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          createMany: {
+            args: Prisma.RedirectCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RedirectCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+          }
+          delete: {
+            args: Prisma.RedirectDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          update: {
+            args: Prisma.RedirectUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          deleteMany: {
+            args: Prisma.RedirectDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RedirectUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RedirectUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+          }
+          upsert: {
+            args: Prisma.RedirectUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RedirectPayload>
+          }
+          aggregate: {
+            args: Prisma.RedirectAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRedirect>
+          }
+          groupBy: {
+            args: Prisma.RedirectGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RedirectGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RedirectCountArgs<ExtArgs>
+            result: $Utils.Optional<RedirectCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1358,6 +1448,7 @@ export namespace Prisma {
     blog?: BlogOmit
     appointment?: AppointmentOmit
     testimonial?: TestimonialOmit
+    redirect?: RedirectOmit
   }
 
   /* Types for Logging */
@@ -9425,6 +9516,1061 @@ export namespace Prisma {
 
 
   /**
+   * Model Redirect
+   */
+
+  export type AggregateRedirect = {
+    _count: RedirectCountAggregateOutputType | null
+    _avg: RedirectAvgAggregateOutputType | null
+    _sum: RedirectSumAggregateOutputType | null
+    _min: RedirectMinAggregateOutputType | null
+    _max: RedirectMaxAggregateOutputType | null
+  }
+
+  export type RedirectAvgAggregateOutputType = {
+    statusCode: number | null
+  }
+
+  export type RedirectSumAggregateOutputType = {
+    statusCode: number | null
+  }
+
+  export type RedirectMinAggregateOutputType = {
+    id: string | null
+    fromPath: string | null
+    toPath: string | null
+    statusCode: number | null
+    lastEditedBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RedirectMaxAggregateOutputType = {
+    id: string | null
+    fromPath: string | null
+    toPath: string | null
+    statusCode: number | null
+    lastEditedBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RedirectCountAggregateOutputType = {
+    id: number
+    fromPath: number
+    toPath: number
+    statusCode: number
+    lastEditedBy: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RedirectAvgAggregateInputType = {
+    statusCode?: true
+  }
+
+  export type RedirectSumAggregateInputType = {
+    statusCode?: true
+  }
+
+  export type RedirectMinAggregateInputType = {
+    id?: true
+    fromPath?: true
+    toPath?: true
+    statusCode?: true
+    lastEditedBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RedirectMaxAggregateInputType = {
+    id?: true
+    fromPath?: true
+    toPath?: true
+    statusCode?: true
+    lastEditedBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RedirectCountAggregateInputType = {
+    id?: true
+    fromPath?: true
+    toPath?: true
+    statusCode?: true
+    lastEditedBy?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RedirectAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Redirect to aggregate.
+     */
+    where?: RedirectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Redirects to fetch.
+     */
+    orderBy?: RedirectOrderByWithRelationInput | RedirectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RedirectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Redirects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Redirects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Redirects
+    **/
+    _count?: true | RedirectCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RedirectAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RedirectSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RedirectMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RedirectMaxAggregateInputType
+  }
+
+  export type GetRedirectAggregateType<T extends RedirectAggregateArgs> = {
+        [P in keyof T & keyof AggregateRedirect]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRedirect[P]>
+      : GetScalarType<T[P], AggregateRedirect[P]>
+  }
+
+
+
+
+  export type RedirectGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RedirectWhereInput
+    orderBy?: RedirectOrderByWithAggregationInput | RedirectOrderByWithAggregationInput[]
+    by: RedirectScalarFieldEnum[] | RedirectScalarFieldEnum
+    having?: RedirectScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RedirectCountAggregateInputType | true
+    _avg?: RedirectAvgAggregateInputType
+    _sum?: RedirectSumAggregateInputType
+    _min?: RedirectMinAggregateInputType
+    _max?: RedirectMaxAggregateInputType
+  }
+
+  export type RedirectGroupByOutputType = {
+    id: string
+    fromPath: string
+    toPath: string
+    statusCode: number
+    lastEditedBy: string
+    createdAt: Date
+    updatedAt: Date
+    _count: RedirectCountAggregateOutputType | null
+    _avg: RedirectAvgAggregateOutputType | null
+    _sum: RedirectSumAggregateOutputType | null
+    _min: RedirectMinAggregateOutputType | null
+    _max: RedirectMaxAggregateOutputType | null
+  }
+
+  type GetRedirectGroupByPayload<T extends RedirectGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RedirectGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RedirectGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RedirectGroupByOutputType[P]>
+            : GetScalarType<T[P], RedirectGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RedirectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fromPath?: boolean
+    toPath?: boolean
+    statusCode?: boolean
+    lastEditedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["redirect"]>
+
+  export type RedirectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fromPath?: boolean
+    toPath?: boolean
+    statusCode?: boolean
+    lastEditedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["redirect"]>
+
+  export type RedirectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fromPath?: boolean
+    toPath?: boolean
+    statusCode?: boolean
+    lastEditedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["redirect"]>
+
+  export type RedirectSelectScalar = {
+    id?: boolean
+    fromPath?: boolean
+    toPath?: boolean
+    statusCode?: boolean
+    lastEditedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RedirectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fromPath" | "toPath" | "statusCode" | "lastEditedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["redirect"]>
+
+  export type $RedirectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Redirect"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      fromPath: string
+      toPath: string
+      statusCode: number
+      lastEditedBy: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["redirect"]>
+    composites: {}
+  }
+
+  type RedirectGetPayload<S extends boolean | null | undefined | RedirectDefaultArgs> = $Result.GetResult<Prisma.$RedirectPayload, S>
+
+  type RedirectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RedirectFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RedirectCountAggregateInputType | true
+    }
+
+  export interface RedirectDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Redirect'], meta: { name: 'Redirect' } }
+    /**
+     * Find zero or one Redirect that matches the filter.
+     * @param {RedirectFindUniqueArgs} args - Arguments to find a Redirect
+     * @example
+     * // Get one Redirect
+     * const redirect = await prisma.redirect.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RedirectFindUniqueArgs>(args: SelectSubset<T, RedirectFindUniqueArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Redirect that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RedirectFindUniqueOrThrowArgs} args - Arguments to find a Redirect
+     * @example
+     * // Get one Redirect
+     * const redirect = await prisma.redirect.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RedirectFindUniqueOrThrowArgs>(args: SelectSubset<T, RedirectFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Redirect that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectFindFirstArgs} args - Arguments to find a Redirect
+     * @example
+     * // Get one Redirect
+     * const redirect = await prisma.redirect.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RedirectFindFirstArgs>(args?: SelectSubset<T, RedirectFindFirstArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Redirect that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectFindFirstOrThrowArgs} args - Arguments to find a Redirect
+     * @example
+     * // Get one Redirect
+     * const redirect = await prisma.redirect.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RedirectFindFirstOrThrowArgs>(args?: SelectSubset<T, RedirectFindFirstOrThrowArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Redirects that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Redirects
+     * const redirects = await prisma.redirect.findMany()
+     * 
+     * // Get first 10 Redirects
+     * const redirects = await prisma.redirect.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const redirectWithIdOnly = await prisma.redirect.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RedirectFindManyArgs>(args?: SelectSubset<T, RedirectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Redirect.
+     * @param {RedirectCreateArgs} args - Arguments to create a Redirect.
+     * @example
+     * // Create one Redirect
+     * const Redirect = await prisma.redirect.create({
+     *   data: {
+     *     // ... data to create a Redirect
+     *   }
+     * })
+     * 
+     */
+    create<T extends RedirectCreateArgs>(args: SelectSubset<T, RedirectCreateArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Redirects.
+     * @param {RedirectCreateManyArgs} args - Arguments to create many Redirects.
+     * @example
+     * // Create many Redirects
+     * const redirect = await prisma.redirect.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RedirectCreateManyArgs>(args?: SelectSubset<T, RedirectCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Redirects and returns the data saved in the database.
+     * @param {RedirectCreateManyAndReturnArgs} args - Arguments to create many Redirects.
+     * @example
+     * // Create many Redirects
+     * const redirect = await prisma.redirect.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Redirects and only return the `id`
+     * const redirectWithIdOnly = await prisma.redirect.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RedirectCreateManyAndReturnArgs>(args?: SelectSubset<T, RedirectCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Redirect.
+     * @param {RedirectDeleteArgs} args - Arguments to delete one Redirect.
+     * @example
+     * // Delete one Redirect
+     * const Redirect = await prisma.redirect.delete({
+     *   where: {
+     *     // ... filter to delete one Redirect
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RedirectDeleteArgs>(args: SelectSubset<T, RedirectDeleteArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Redirect.
+     * @param {RedirectUpdateArgs} args - Arguments to update one Redirect.
+     * @example
+     * // Update one Redirect
+     * const redirect = await prisma.redirect.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RedirectUpdateArgs>(args: SelectSubset<T, RedirectUpdateArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Redirects.
+     * @param {RedirectDeleteManyArgs} args - Arguments to filter Redirects to delete.
+     * @example
+     * // Delete a few Redirects
+     * const { count } = await prisma.redirect.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RedirectDeleteManyArgs>(args?: SelectSubset<T, RedirectDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Redirects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Redirects
+     * const redirect = await prisma.redirect.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RedirectUpdateManyArgs>(args: SelectSubset<T, RedirectUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Redirects and returns the data updated in the database.
+     * @param {RedirectUpdateManyAndReturnArgs} args - Arguments to update many Redirects.
+     * @example
+     * // Update many Redirects
+     * const redirect = await prisma.redirect.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Redirects and only return the `id`
+     * const redirectWithIdOnly = await prisma.redirect.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RedirectUpdateManyAndReturnArgs>(args: SelectSubset<T, RedirectUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Redirect.
+     * @param {RedirectUpsertArgs} args - Arguments to update or create a Redirect.
+     * @example
+     * // Update or create a Redirect
+     * const redirect = await prisma.redirect.upsert({
+     *   create: {
+     *     // ... data to create a Redirect
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Redirect we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RedirectUpsertArgs>(args: SelectSubset<T, RedirectUpsertArgs<ExtArgs>>): Prisma__RedirectClient<$Result.GetResult<Prisma.$RedirectPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Redirects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectCountArgs} args - Arguments to filter Redirects to count.
+     * @example
+     * // Count the number of Redirects
+     * const count = await prisma.redirect.count({
+     *   where: {
+     *     // ... the filter for the Redirects we want to count
+     *   }
+     * })
+    **/
+    count<T extends RedirectCountArgs>(
+      args?: Subset<T, RedirectCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RedirectCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Redirect.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RedirectAggregateArgs>(args: Subset<T, RedirectAggregateArgs>): Prisma.PrismaPromise<GetRedirectAggregateType<T>>
+
+    /**
+     * Group by Redirect.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RedirectGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RedirectGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RedirectGroupByArgs['orderBy'] }
+        : { orderBy?: RedirectGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RedirectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRedirectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Redirect model
+   */
+  readonly fields: RedirectFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Redirect.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RedirectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Redirect model
+   */
+  interface RedirectFieldRefs {
+    readonly id: FieldRef<"Redirect", 'String'>
+    readonly fromPath: FieldRef<"Redirect", 'String'>
+    readonly toPath: FieldRef<"Redirect", 'String'>
+    readonly statusCode: FieldRef<"Redirect", 'Int'>
+    readonly lastEditedBy: FieldRef<"Redirect", 'String'>
+    readonly createdAt: FieldRef<"Redirect", 'DateTime'>
+    readonly updatedAt: FieldRef<"Redirect", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Redirect findUnique
+   */
+  export type RedirectFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter, which Redirect to fetch.
+     */
+    where: RedirectWhereUniqueInput
+  }
+
+  /**
+   * Redirect findUniqueOrThrow
+   */
+  export type RedirectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter, which Redirect to fetch.
+     */
+    where: RedirectWhereUniqueInput
+  }
+
+  /**
+   * Redirect findFirst
+   */
+  export type RedirectFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter, which Redirect to fetch.
+     */
+    where?: RedirectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Redirects to fetch.
+     */
+    orderBy?: RedirectOrderByWithRelationInput | RedirectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Redirects.
+     */
+    cursor?: RedirectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Redirects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Redirects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Redirects.
+     */
+    distinct?: RedirectScalarFieldEnum | RedirectScalarFieldEnum[]
+  }
+
+  /**
+   * Redirect findFirstOrThrow
+   */
+  export type RedirectFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter, which Redirect to fetch.
+     */
+    where?: RedirectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Redirects to fetch.
+     */
+    orderBy?: RedirectOrderByWithRelationInput | RedirectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Redirects.
+     */
+    cursor?: RedirectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Redirects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Redirects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Redirects.
+     */
+    distinct?: RedirectScalarFieldEnum | RedirectScalarFieldEnum[]
+  }
+
+  /**
+   * Redirect findMany
+   */
+  export type RedirectFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter, which Redirects to fetch.
+     */
+    where?: RedirectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Redirects to fetch.
+     */
+    orderBy?: RedirectOrderByWithRelationInput | RedirectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Redirects.
+     */
+    cursor?: RedirectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Redirects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Redirects.
+     */
+    skip?: number
+    distinct?: RedirectScalarFieldEnum | RedirectScalarFieldEnum[]
+  }
+
+  /**
+   * Redirect create
+   */
+  export type RedirectCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Redirect.
+     */
+    data: XOR<RedirectCreateInput, RedirectUncheckedCreateInput>
+  }
+
+  /**
+   * Redirect createMany
+   */
+  export type RedirectCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Redirects.
+     */
+    data: RedirectCreateManyInput | RedirectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Redirect createManyAndReturn
+   */
+  export type RedirectCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * The data used to create many Redirects.
+     */
+    data: RedirectCreateManyInput | RedirectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Redirect update
+   */
+  export type RedirectUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Redirect.
+     */
+    data: XOR<RedirectUpdateInput, RedirectUncheckedUpdateInput>
+    /**
+     * Choose, which Redirect to update.
+     */
+    where: RedirectWhereUniqueInput
+  }
+
+  /**
+   * Redirect updateMany
+   */
+  export type RedirectUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Redirects.
+     */
+    data: XOR<RedirectUpdateManyMutationInput, RedirectUncheckedUpdateManyInput>
+    /**
+     * Filter which Redirects to update
+     */
+    where?: RedirectWhereInput
+    /**
+     * Limit how many Redirects to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Redirect updateManyAndReturn
+   */
+  export type RedirectUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * The data used to update Redirects.
+     */
+    data: XOR<RedirectUpdateManyMutationInput, RedirectUncheckedUpdateManyInput>
+    /**
+     * Filter which Redirects to update
+     */
+    where?: RedirectWhereInput
+    /**
+     * Limit how many Redirects to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Redirect upsert
+   */
+  export type RedirectUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Redirect to update in case it exists.
+     */
+    where: RedirectWhereUniqueInput
+    /**
+     * In case the Redirect found by the `where` argument doesn't exist, create a new Redirect with this data.
+     */
+    create: XOR<RedirectCreateInput, RedirectUncheckedCreateInput>
+    /**
+     * In case the Redirect was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RedirectUpdateInput, RedirectUncheckedUpdateInput>
+  }
+
+  /**
+   * Redirect delete
+   */
+  export type RedirectDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+    /**
+     * Filter which Redirect to delete.
+     */
+    where: RedirectWhereUniqueInput
+  }
+
+  /**
+   * Redirect deleteMany
+   */
+  export type RedirectDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Redirects to delete
+     */
+    where?: RedirectWhereInput
+    /**
+     * Limit how many Redirects to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Redirect without action
+   */
+  export type RedirectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Redirect
+     */
+    select?: RedirectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Redirect
+     */
+    omit?: RedirectOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9572,6 +10718,19 @@ export namespace Prisma {
   };
 
   export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[keyof typeof TestimonialScalarFieldEnum]
+
+
+  export const RedirectScalarFieldEnum: {
+    id: 'id',
+    fromPath: 'fromPath',
+    toPath: 'toPath',
+    statusCode: 'statusCode',
+    lastEditedBy: 'lastEditedBy',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RedirectScalarFieldEnum = (typeof RedirectScalarFieldEnum)[keyof typeof RedirectScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10400,6 +11559,70 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Testimonial"> | Date | string
   }
 
+  export type RedirectWhereInput = {
+    AND?: RedirectWhereInput | RedirectWhereInput[]
+    OR?: RedirectWhereInput[]
+    NOT?: RedirectWhereInput | RedirectWhereInput[]
+    id?: UuidFilter<"Redirect"> | string
+    fromPath?: StringFilter<"Redirect"> | string
+    toPath?: StringFilter<"Redirect"> | string
+    statusCode?: IntFilter<"Redirect"> | number
+    lastEditedBy?: StringFilter<"Redirect"> | string
+    createdAt?: DateTimeFilter<"Redirect"> | Date | string
+    updatedAt?: DateTimeFilter<"Redirect"> | Date | string
+  }
+
+  export type RedirectOrderByWithRelationInput = {
+    id?: SortOrder
+    fromPath?: SortOrder
+    toPath?: SortOrder
+    statusCode?: SortOrder
+    lastEditedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RedirectWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    fromPath?: string
+    AND?: RedirectWhereInput | RedirectWhereInput[]
+    OR?: RedirectWhereInput[]
+    NOT?: RedirectWhereInput | RedirectWhereInput[]
+    toPath?: StringFilter<"Redirect"> | string
+    statusCode?: IntFilter<"Redirect"> | number
+    lastEditedBy?: StringFilter<"Redirect"> | string
+    createdAt?: DateTimeFilter<"Redirect"> | Date | string
+    updatedAt?: DateTimeFilter<"Redirect"> | Date | string
+  }, "id" | "fromPath">
+
+  export type RedirectOrderByWithAggregationInput = {
+    id?: SortOrder
+    fromPath?: SortOrder
+    toPath?: SortOrder
+    statusCode?: SortOrder
+    lastEditedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RedirectCountOrderByAggregateInput
+    _avg?: RedirectAvgOrderByAggregateInput
+    _max?: RedirectMaxOrderByAggregateInput
+    _min?: RedirectMinOrderByAggregateInput
+    _sum?: RedirectSumOrderByAggregateInput
+  }
+
+  export type RedirectScalarWhereWithAggregatesInput = {
+    AND?: RedirectScalarWhereWithAggregatesInput | RedirectScalarWhereWithAggregatesInput[]
+    OR?: RedirectScalarWhereWithAggregatesInput[]
+    NOT?: RedirectScalarWhereWithAggregatesInput | RedirectScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"Redirect"> | string
+    fromPath?: StringWithAggregatesFilter<"Redirect"> | string
+    toPath?: StringWithAggregatesFilter<"Redirect"> | string
+    statusCode?: IntWithAggregatesFilter<"Redirect"> | number
+    lastEditedBy?: StringWithAggregatesFilter<"Redirect"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Redirect"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Redirect"> | Date | string
+  }
+
   export type AdminCreateInput = {
     id?: string
     name: string
@@ -11211,6 +12434,76 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RedirectCreateInput = {
+    id?: string
+    fromPath: string
+    toPath: string
+    statusCode?: number
+    lastEditedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RedirectUncheckedCreateInput = {
+    id?: string
+    fromPath: string
+    toPath: string
+    statusCode?: number
+    lastEditedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RedirectUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fromPath?: StringFieldUpdateOperationsInput | string
+    toPath?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    lastEditedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RedirectUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fromPath?: StringFieldUpdateOperationsInput | string
+    toPath?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    lastEditedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RedirectCreateManyInput = {
+    id?: string
+    fromPath: string
+    toPath: string
+    statusCode?: number
+    lastEditedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type RedirectUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fromPath?: StringFieldUpdateOperationsInput | string
+    toPath?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    lastEditedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RedirectUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fromPath?: StringFieldUpdateOperationsInput | string
+    toPath?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    lastEditedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UuidFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11818,6 +13111,44 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type RedirectCountOrderByAggregateInput = {
+    id?: SortOrder
+    fromPath?: SortOrder
+    toPath?: SortOrder
+    statusCode?: SortOrder
+    lastEditedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RedirectAvgOrderByAggregateInput = {
+    statusCode?: SortOrder
+  }
+
+  export type RedirectMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fromPath?: SortOrder
+    toPath?: SortOrder
+    statusCode?: SortOrder
+    lastEditedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RedirectMinOrderByAggregateInput = {
+    id?: SortOrder
+    fromPath?: SortOrder
+    toPath?: SortOrder
+    statusCode?: SortOrder
+    lastEditedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RedirectSumOrderByAggregateInput = {
+    statusCode?: SortOrder
   }
 
   export type AdminCreatepermissionsInput = {

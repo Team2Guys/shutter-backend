@@ -157,3 +157,19 @@ model Testimonial {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Redirect {
+  id String @id @default(uuid()) @db.Uuid
+
+  // Normalized source path (leading slash, no trailing slash), e.g. "/solid-panel-plantation-shutters"
+  fromPath   String @unique
+  // Destination path or absolute URL, e.g. "/shutters-by-style/solid-panel-plantation-shutters"
+  toPath     String
+  // HTTP redirect status: 301 (permanent) or 302 (temporary)
+  statusCode Int    @default(301)
+
+  lastEditedBy String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

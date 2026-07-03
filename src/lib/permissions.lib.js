@@ -24,6 +24,11 @@ export const PERMISSIONS = {
   EDIT_TESTIMONIAL: "canEditTestimonial",
   DELETE_TESTIMONIAL: "canDeleteTestimonial",
 
+  // Redirect
+  ADD_REDIRECT: "canAddRedirect",
+  EDIT_REDIRECT: "canEditRedirect",
+  DELETE_REDIRECT: "canDeleteRedirect",
+
   // Appointment (view only — appointments cannot be deleted)
   VIEW_APPOINTMENTS: "canViewAppointments",
 
