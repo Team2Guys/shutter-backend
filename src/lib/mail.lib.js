@@ -19,6 +19,8 @@ const {
   EMAIL_PASS,
   USER_EMAIL,
   USER_PASSWORD,
+  EMAIL_HOST,
+  EMAIL_PORT,
 } = env;
 
 // Prefer the dedicated mailbox login (ADMIN_*), then the sending account,
@@ -28,9 +30,9 @@ const SENDER_PASS = EMAIL_PASS || ADMIN_PASSWORD || USER_PASSWORD;
 
 const createTransporter = () => {
   const transporter = nodemailer.createTransport({
-    host: "mail.blindsandcurtains.ae",
-    port: 465,
-    secure: true, // implicit TLS — port 587 is blocked on this network
+    host: EMAIL_HOST,
+    port: EMAIL_PORT,
+    secure: EMAIL_PORT === 465, // implicit TLS on 465, STARTTLS otherwise
     auth: { user: SENDER_EMAIL, pass: SENDER_PASS },
     connectionTimeout: 10000,
     socketTimeout: 10000,
