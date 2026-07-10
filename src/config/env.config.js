@@ -15,8 +15,10 @@ const validators = {
 
   BACKEND_URL: url({ desc: "Backend URL" }),
   FRONTEND_URL: url({ desc: "Public website URL" }),
+  // Plain default (not devDefault): only feeds the CORS whitelist, which
+  // already hardcodes the production domains — must never crash the boot.
   DASHBOARD_URL: url({
-    devDefault: "http://localhost:3000",
+    default: "http://localhost:3000",
     desc: "Admin dashboard URL",
   }),
 
