@@ -109,6 +109,9 @@ const sendMail = async ({ to, subject, html }) => {
       html,
     });
   } catch (error) {
+    // Log the real SMTP failure (visible in Vercel function logs); the
+    // client only ever sees the generic message below.
+    logger.error(`[mail] send failed (to: ${to}): ${error.message}`);
     if (NODE_ENV !== "production") console.error("[Email Send Error]", error);
     throw createError(500, "Failed to send email.");
   }
