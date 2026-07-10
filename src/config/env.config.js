@@ -9,8 +9,7 @@ const validators = {
     default: "development",
     desc: "Environment type",
   }),
-  // Defaulted (not devDefault): serverless platforms like Vercel never bind a
-  // port, so this must not become a required var in production.
+
   PORT: port({ default: 5000, desc: "Port number" }),
 
   BACKEND_URL: url({ desc: "Backend URL" }),
