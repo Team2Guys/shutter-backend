@@ -103,7 +103,7 @@ const processTemplate = (template, variables) => {
 const sendMail = async ({ to, subject, html }) => {
   try {
     return await transporter.sendMail({
-      from: `Shutter <${SENDER_EMAIL}>`,
+      from: `Shutters.ae <${SENDER_EMAIL}>`,
       to,
       subject,
       html,

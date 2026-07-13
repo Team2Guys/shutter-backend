@@ -41,7 +41,7 @@ const sendAppointmentEmails = async (appointment) => {
   try {
     await sendEmail("appointment-customer", {
       to: appointment.email,
-      subject: "Appointment Confirmation - Shutter",
+      subject: "Appointment Confirmation - Shutters.ae",
       ...vars,
     });
   } catch (error) {
@@ -53,7 +53,7 @@ const sendAppointmentEmails = async (appointment) => {
     try {
       await sendEmail("appointment-admin", {
         to: NOTIFICATION_RECIPIENTS,
-        subject: `New appointment request from ${appointment.name}`,
+        subject: "Book A Free Design Visit Shutters.ae",
         ...vars,
       });
     } catch (error) {
