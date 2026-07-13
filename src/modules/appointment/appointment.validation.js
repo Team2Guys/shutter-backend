@@ -5,6 +5,15 @@ export const createAppointmentSchema = z.object({
   email: z.string().trim().toLowerCase().email("A valid email is required"),
   phone: z.string().trim().min(1, "Phone is required"),
   whatsapp: z.string().trim().optional().nullable(),
+  preferredDate: z
+    .string()
+    .trim()
+    .min(1, "Preferred date is required")
+    .refine(
+      (date) =>
+        date >= new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Dubai" }),
+      "Preferred date cannot be in the past"
+    ),
   availableTime: z.string().trim().min(1, "Preferred time is required"),
   emirate: z.string().trim().min(1, "Emirate is required"),
   area: z.string().trim().min(1, "Area is required"),

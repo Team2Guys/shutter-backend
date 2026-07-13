@@ -7,6 +7,7 @@ export const appointmentTypeDefs = gql`
     email: String!
     phone: String!
     whatsapp: String
+    preferredDate: String
     availableTime: String!
     emirate: String!
     area: String!
@@ -20,6 +21,7 @@ export const appointmentTypeDefs = gql`
     email: String!
     phone: String!
     whatsapp: String
+    preferredDate: String!
     availableTime: String!
     emirate: String!
     area: String!

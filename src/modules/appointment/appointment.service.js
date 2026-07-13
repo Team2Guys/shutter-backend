@@ -6,6 +6,15 @@ const { FRONTEND_URL } = env;
 const escapeHtml = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+/** "2026-07-15" -> "15 July 2026"; falls back to the raw value. */
+const formatPreferredDate = (value) => {
+  if (!value) return "Not provided";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+};
+
 /** Fire-and-log emails; never let a mail failure break the booking. */
 const sendAppointmentEmails = async (appointment) => {
   const types = appointment.shutterTypes?.length
@@ -21,6 +30,7 @@ const sendAppointmentEmails = async (appointment) => {
     phone: appointment.phone,
     whatsapp: appointment.whatsapp || "Not provided",
     location,
+    preferredDate: formatPreferredDate(appointment.preferredDate),
     availableTime: appointment.availableTime,
     message: appointment.message || "—",
     shutterTypesHtml,
