@@ -51,6 +51,10 @@ const validators = {
   // Redis (optional — falls back to in-memory cache if unavailable)
   REDIS_URL: str({ default: "", desc: "Redis connection string" }),
 
+  // Google reCAPTCHA v2 secret (server-side verification of public forms).
+  // Empty = verification disabled, so forms keep working until keys are set.
+  RECAPTCHA_SECRET_KEY: str({ default: "", desc: "Google reCAPTCHA v2 secret key" }),
+
   // Bootstrap super admin (created via `npm run db:seed`)
   SUPER_ADMIN_NAME: str({ default: "Super Admin", desc: "Bootstrap super admin name" }),
   SUPER_ADMIN_EMAIL: email({ desc: "Bootstrap super admin email" }),

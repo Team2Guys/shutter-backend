@@ -17,6 +17,11 @@ export const createAppointmentSchema = z.object({
   availableTime: z.string().trim().min(1, "Preferred time is required"),
   emirate: z.string().trim().min(1, "Emirate is required"),
   area: z.string().trim().min(1, "Area is required"),
-  message: z.string().trim().optional().nullable(),
+  message: z
+    .string()
+    .trim()
+    .max(1000, "Message must be 1000 characters or fewer")
+    .optional()
+    .nullable(),
   shutterTypes: z.array(z.string()).optional().default([]),
 });

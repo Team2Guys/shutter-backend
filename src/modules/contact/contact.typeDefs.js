@@ -17,6 +17,7 @@ export const contactTypeDefs = gql`
     phone: String!
     whatsapp: String!
     message: String!
+    recaptchaToken: String
   }
 
   type Query {

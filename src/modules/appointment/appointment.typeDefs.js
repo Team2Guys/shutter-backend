@@ -27,6 +27,7 @@ export const appointmentTypeDefs = gql`
     area: String!
     message: String
     shutterTypes: [String!]
+    recaptchaToken: String
   }
 
   type Query {

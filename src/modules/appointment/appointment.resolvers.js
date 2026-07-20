@@ -1,4 +1,10 @@
-import { validate, verify, handlePromise, PERMISSIONS } from "#lib/index.js";
+import {
+  validate,
+  verify,
+  verifyRecaptcha,
+  handlePromise,
+  PERMISSIONS,
+} from "#lib/index.js";
 import { appointmentService } from "./appointment.service.js";
 import { createAppointmentSchema } from "./appointment.validation.js";
 
@@ -19,7 +25,9 @@ export const appointmentResolvers = {
   Mutation: {
     // Public: submitted from the website appointment form.
     createAppointment: handlePromise(async (_p, { input }) => {
-      const data = validate(createAppointmentSchema, input);
+      const { recaptchaToken, ...rest } = input;
+      await verifyRecaptcha(recaptchaToken);
+      const data = validate(createAppointmentSchema, rest);
       await appointmentService.create(data);
       return {
         success: true,

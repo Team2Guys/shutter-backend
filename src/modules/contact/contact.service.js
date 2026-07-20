@@ -29,7 +29,7 @@ const sendContactEmails = async (contact) => {
     try {
       await sendEmail("contact-admin", {
         to: NOTIFICATION_RECIPIENTS,
-        subject: `New contact message from ${contact.name}`,
+        subject: "New Contact Form Received Shutters.ae",
         ...vars,
       });
     } catch (error) {
