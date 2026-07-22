@@ -29,6 +29,14 @@ export const commonTypeDefs = gql`
     message: String!
   }
 
+  "Summary returned by any bulk CSV import mutation."
+  type ImportResult {
+    created: Int!
+    updated: Int!
+    skipped: Int!
+    errors: [String!]!
+  }
+
   type Query {
     _health: String!
   }

@@ -39,5 +39,14 @@ export const productResolvers = {
         productService.remove(id)
       )
     ),
+
+    importProducts: handlePromise(
+      verify.permission(PERMISSIONS.EDIT_PRODUCT)((_p, { input }, ctx) => {
+        const canCreate =
+          ctx.user.role === "SUPER_ADMIN" ||
+          (ctx.user.permissions || []).includes(PERMISSIONS.ADD_PRODUCT);
+        return productService.importMany(input, ctx.user.name, canCreate);
+      })
+    ),
   },
 };

@@ -7381,6 +7381,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     whatsapp: string | null
+    preferredDate: string | null
     availableTime: string | null
     emirate: string | null
     area: string | null
@@ -7394,6 +7395,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     whatsapp: string | null
+    preferredDate: string | null
     availableTime: string | null
     emirate: string | null
     area: string | null
@@ -7407,6 +7409,7 @@ export namespace Prisma {
     email: number
     phone: number
     whatsapp: number
+    preferredDate: number
     availableTime: number
     emirate: number
     area: number
@@ -7423,6 +7426,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     whatsapp?: true
+    preferredDate?: true
     availableTime?: true
     emirate?: true
     area?: true
@@ -7436,6 +7440,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     whatsapp?: true
+    preferredDate?: true
     availableTime?: true
     emirate?: true
     area?: true
@@ -7449,6 +7454,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     whatsapp?: true
+    preferredDate?: true
     availableTime?: true
     emirate?: true
     area?: true
@@ -7536,6 +7542,7 @@ export namespace Prisma {
     email: string
     phone: string
     whatsapp: string | null
+    preferredDate: string | null
     availableTime: string
     emirate: string
     area: string
@@ -7567,6 +7574,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     whatsapp?: boolean
+    preferredDate?: boolean
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
@@ -7581,6 +7589,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     whatsapp?: boolean
+    preferredDate?: boolean
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
@@ -7595,6 +7604,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     whatsapp?: boolean
+    preferredDate?: boolean
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
@@ -7609,6 +7619,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     whatsapp?: boolean
+    preferredDate?: boolean
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
@@ -7617,7 +7628,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "availableTime" | "emirate" | "area" | "message" | "shutterTypes" | "createdAt", ExtArgs["result"]["appointment"]>
+  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "preferredDate" | "availableTime" | "emirate" | "area" | "message" | "shutterTypes" | "createdAt", ExtArgs["result"]["appointment"]>
 
   export type $AppointmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Appointment"
@@ -7628,6 +7639,7 @@ export namespace Prisma {
       email: string
       phone: string
       whatsapp: string | null
+      preferredDate: string | null
       availableTime: string
       emirate: string
       area: string
@@ -8062,6 +8074,7 @@ export namespace Prisma {
     readonly email: FieldRef<"Appointment", 'String'>
     readonly phone: FieldRef<"Appointment", 'String'>
     readonly whatsapp: FieldRef<"Appointment", 'String'>
+    readonly preferredDate: FieldRef<"Appointment", 'String'>
     readonly availableTime: FieldRef<"Appointment", 'String'>
     readonly emirate: FieldRef<"Appointment", 'String'>
     readonly area: FieldRef<"Appointment", 'String'>
@@ -10694,6 +10707,7 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     whatsapp: 'whatsapp',
+    preferredDate: 'preferredDate',
     availableTime: 'availableTime',
     emirate: 'emirate',
     area: 'area',
@@ -11412,6 +11426,7 @@ export namespace Prisma {
     email?: StringFilter<"Appointment"> | string
     phone?: StringFilter<"Appointment"> | string
     whatsapp?: StringNullableFilter<"Appointment"> | string | null
+    preferredDate?: StringNullableFilter<"Appointment"> | string | null
     availableTime?: StringFilter<"Appointment"> | string
     emirate?: StringFilter<"Appointment"> | string
     area?: StringFilter<"Appointment"> | string
@@ -11426,6 +11441,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     whatsapp?: SortOrderInput | SortOrder
+    preferredDate?: SortOrderInput | SortOrder
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
@@ -11443,6 +11459,7 @@ export namespace Prisma {
     email?: StringFilter<"Appointment"> | string
     phone?: StringFilter<"Appointment"> | string
     whatsapp?: StringNullableFilter<"Appointment"> | string | null
+    preferredDate?: StringNullableFilter<"Appointment"> | string | null
     availableTime?: StringFilter<"Appointment"> | string
     emirate?: StringFilter<"Appointment"> | string
     area?: StringFilter<"Appointment"> | string
@@ -11457,6 +11474,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     whatsapp?: SortOrderInput | SortOrder
+    preferredDate?: SortOrderInput | SortOrder
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
@@ -11477,6 +11495,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Appointment"> | string
     phone?: StringWithAggregatesFilter<"Appointment"> | string
     whatsapp?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    preferredDate?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     availableTime?: StringWithAggregatesFilter<"Appointment"> | string
     emirate?: StringWithAggregatesFilter<"Appointment"> | string
     area?: StringWithAggregatesFilter<"Appointment"> | string
@@ -12258,6 +12277,7 @@ export namespace Prisma {
     email: string
     phone: string
     whatsapp?: string | null
+    preferredDate?: string | null
     availableTime: string
     emirate: string
     area: string
@@ -12272,6 +12292,7 @@ export namespace Prisma {
     email: string
     phone: string
     whatsapp?: string | null
+    preferredDate?: string | null
     availableTime: string
     emirate: string
     area: string
@@ -12286,6 +12307,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredDate?: NullableStringFieldUpdateOperationsInput | string | null
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
@@ -12300,6 +12322,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredDate?: NullableStringFieldUpdateOperationsInput | string | null
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
@@ -12314,6 +12337,7 @@ export namespace Prisma {
     email: string
     phone: string
     whatsapp?: string | null
+    preferredDate?: string | null
     availableTime: string
     emirate: string
     area: string
@@ -12328,6 +12352,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredDate?: NullableStringFieldUpdateOperationsInput | string | null
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
@@ -12342,6 +12367,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     whatsapp?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredDate?: NullableStringFieldUpdateOperationsInput | string | null
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
@@ -13008,6 +13034,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     whatsapp?: SortOrder
+    preferredDate?: SortOrder
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
@@ -13022,6 +13049,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     whatsapp?: SortOrder
+    preferredDate?: SortOrder
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
@@ -13035,6 +13063,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     whatsapp?: SortOrder
+    preferredDate?: SortOrder
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder

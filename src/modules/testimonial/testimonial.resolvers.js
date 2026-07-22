@@ -33,5 +33,14 @@ export const testimonialResolvers = {
         testimonialService.remove(id)
       )
     ),
+
+    importTestimonials: handlePromise(
+      verify.permission(PERMISSIONS.EDIT_TESTIMONIAL)((_p, { input }, ctx) => {
+        const canCreate =
+          ctx.user.role === "SUPER_ADMIN" ||
+          (ctx.user.permissions || []).includes(PERMISSIONS.ADD_TESTIMONIAL);
+        return testimonialService.importMany(input, ctx.user.name, canCreate);
+      })
+    ),
   },
 };
