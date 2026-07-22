@@ -136,6 +136,7 @@ model Appointment {
   email         String
   phone         String
   whatsapp      String?
+  preferredDate String?
   availableTime String
   emirate       String
   area          String

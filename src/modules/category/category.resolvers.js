@@ -37,5 +37,16 @@ export const categoryResolvers = {
         categoryService.remove(id)
       )
     ),
+
+    // Bulk CSV import. Editing existing rows needs EDIT_CATEGORY; rows that would
+    // create a brand-new category additionally require ADD_CATEGORY.
+    importCategories: handlePromise(
+      verify.permission(PERMISSIONS.EDIT_CATEGORY)((_p, { input }, ctx) => {
+        const canCreate =
+          ctx.user.role === "SUPER_ADMIN" ||
+          (ctx.user.permissions || []).includes(PERMISSIONS.ADD_CATEGORY);
+        return categoryService.importMany(input, ctx.user.name, canCreate);
+      })
+    ),
   },
 };

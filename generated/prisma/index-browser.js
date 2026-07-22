@@ -215,6 +215,7 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   whatsapp: 'whatsapp',
+  preferredDate: 'preferredDate',
   availableTime: 'availableTime',
   emirate: 'emirate',
   area: 'area',

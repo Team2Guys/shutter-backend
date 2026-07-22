@@ -23,6 +23,17 @@ export const redirectTypeDefs = gql`
     statusCode: Int
   }
 
+  """
+  One CSV row for bulk import. Rows match by \`id\` then the unique \`fromPath\`;
+  unmatched rows are created.
+  """
+  input ImportRedirectInput {
+    id: ID
+    fromPath: String
+    toPath: String
+    statusCode: Int
+  }
+
   type Query {
     redirectList: [Redirect!]!
     redirectById(id: ID!): Redirect
@@ -34,5 +45,6 @@ export const redirectTypeDefs = gql`
     createRedirect(input: CreateRedirectInput!): Redirect
     updateRedirectById(id: ID!, input: UpdateRedirectInput!): Redirect
     removeRedirectById(id: ID!): GenericResponse
+    importRedirects(input: [ImportRedirectInput!]!): ImportResult!
   }
 `;

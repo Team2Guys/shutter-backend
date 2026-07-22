@@ -49,6 +49,25 @@ export const categoryTypeDefs = gql`
     status: ContentStatus
   }
 
+  """
+  One CSV row for bulk import. Images are intentionally excluded — imports never
+  touch bannerImage/posterImage. When \`id\` matches an existing category the row
+  is updated; otherwise a matching \`path\`/\`name\` is updated, else a new category
+  is created.
+  """
+  input ImportCategoryInput {
+    id: ID
+    name: String
+    description: String
+    breadcrumb: String
+    path: String
+    metaTitle: String
+    metaDescription: String
+    canonicalUrl: String
+    seoSchema: String
+    status: ContentStatus
+  }
+
   type Query {
     categoryList(published: Boolean): [Category!]!
     categoryById(id: ID!): Category
@@ -59,5 +78,6 @@ export const categoryTypeDefs = gql`
     createCategory(input: CreateCategoryInput!): Category
     updateCategoryById(id: ID!, input: UpdateCategoryInput!): Category
     removeCategoryById(id: ID!): GenericResponse
+    importCategories(input: [ImportCategoryInput!]!): ImportResult!
   }
 `;

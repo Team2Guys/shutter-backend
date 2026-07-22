@@ -34,5 +34,14 @@ export const redirectResolvers = {
         redirectService.remove(id)
       )
     ),
+
+    importRedirects: handlePromise(
+      verify.permission(PERMISSIONS.EDIT_REDIRECT)((_p, { input }, ctx) => {
+        const canCreate =
+          ctx.user.role === "SUPER_ADMIN" ||
+          (ctx.user.permissions || []).includes(PERMISSIONS.ADD_REDIRECT);
+        return redirectService.importMany(input, ctx.user.name, canCreate);
+      })
+    ),
   },
 };

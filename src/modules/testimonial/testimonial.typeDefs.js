@@ -29,6 +29,19 @@ export const testimonialTypeDefs = gql`
     status: ContentStatus
   }
 
+  """
+  One CSV row for bulk import. Rows match by \`id\` (updated); rows without a
+  matching id are created.
+  """
+  input ImportTestimonialInput {
+    id: ID
+    name: String
+    designation: String
+    rating: Int
+    description: String
+    status: ContentStatus
+  }
+
   type Query {
     testimonialList(published: Boolean): [Testimonial!]!
     testimonialById(id: ID!): Testimonial
@@ -38,5 +51,6 @@ export const testimonialTypeDefs = gql`
     createTestimonial(input: CreateTestimonialInput!): Testimonial
     updateTestimonialById(id: ID!, input: UpdateTestimonialInput!): Testimonial
     removeTestimonialById(id: ID!): GenericResponse
+    importTestimonials(input: [ImportTestimonialInput!]!): ImportResult!
   }
 `;
