@@ -1,7 +1,25 @@
-import createError from "http-errors";
+import { GraphQLError } from "graphql";
+
+/**
+ * GraphQL errors carry a machine-readable `extensions.code` (surfaced by the
+ * Apollo `formatError` hook) so the dashboard can tell "your session expired"
+ * (UNAUTHENTICATED → force a logout) apart from "you lack this permission"
+ * (FORBIDDEN → just show the message).
+ */
+const authError = (message) =>
+  new GraphQLError(message, {
+    extensions: { code: "UNAUTHENTICATED", http: { status: 401 } },
+  });
+
+const forbiddenError = (message) =>
+  new GraphQLError(message, {
+    extensions: { code: "FORBIDDEN", http: { status: 403 } },
+  });
 
 const requireAuth = (context) => {
-  if (!context.user) throw createError(401, "Authentication required.");
+  // A missing user also covers an expired/invalid token: the context builder
+  // swallows the verify failure and leaves `user` null.
+  if (!context.user) throw authError("Session expired. Please sign in again.");
 };
 
 /**
@@ -18,8 +36,7 @@ export const verify = {
   role: (authorizedRoles) => (resolver) => (parent, args, context, info) => {
     requireAuth(context);
     if (!authorizedRoles.includes(context.user.role)) {
-      throw createError(
-        403,
+      throw forbiddenError(
         `Access denied: requires one of ${authorizedRoles.join(", ")}.`
       );
     }
@@ -34,8 +51,7 @@ export const verify = {
         return resolver(parent, args, context, info);
       }
       if (!permissions.includes(permissionKey)) {
-        throw createError(
-          403,
+        throw forbiddenError(
           `Access denied: missing permission "${permissionKey}".`
         );
       }

@@ -2631,6 +2631,10 @@ export namespace Prisma {
     metaDescription: string | null
     canonicalUrl: string | null
     seoSchema: string | null
+    blogMetaTitle: string | null
+    blogMetaDescription: string | null
+    blogCanonicalUrl: string | null
+    blogSeoSchema: string | null
     lastEditedBy: string | null
     status: $Enums.ContentStatus | null
     createdAt: Date | null
@@ -2647,6 +2651,10 @@ export namespace Prisma {
     metaDescription: string | null
     canonicalUrl: string | null
     seoSchema: string | null
+    blogMetaTitle: string | null
+    blogMetaDescription: string | null
+    blogCanonicalUrl: string | null
+    blogSeoSchema: string | null
     lastEditedBy: string | null
     status: $Enums.ContentStatus | null
     createdAt: Date | null
@@ -2665,6 +2673,10 @@ export namespace Prisma {
     metaDescription: number
     canonicalUrl: number
     seoSchema: number
+    blogMetaTitle: number
+    blogMetaDescription: number
+    blogCanonicalUrl: number
+    blogSeoSchema: number
     lastEditedBy: number
     status: number
     createdAt: number
@@ -2683,6 +2695,10 @@ export namespace Prisma {
     metaDescription?: true
     canonicalUrl?: true
     seoSchema?: true
+    blogMetaTitle?: true
+    blogMetaDescription?: true
+    blogCanonicalUrl?: true
+    blogSeoSchema?: true
     lastEditedBy?: true
     status?: true
     createdAt?: true
@@ -2699,6 +2715,10 @@ export namespace Prisma {
     metaDescription?: true
     canonicalUrl?: true
     seoSchema?: true
+    blogMetaTitle?: true
+    blogMetaDescription?: true
+    blogCanonicalUrl?: true
+    blogSeoSchema?: true
     lastEditedBy?: true
     status?: true
     createdAt?: true
@@ -2717,6 +2737,10 @@ export namespace Prisma {
     metaDescription?: true
     canonicalUrl?: true
     seoSchema?: true
+    blogMetaTitle?: true
+    blogMetaDescription?: true
+    blogCanonicalUrl?: true
+    blogSeoSchema?: true
     lastEditedBy?: true
     status?: true
     createdAt?: true
@@ -2808,6 +2832,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema: string | null
+    blogMetaTitle: string | null
+    blogMetaDescription: string | null
+    blogCanonicalUrl: string | null
+    blogSeoSchema: string | null
     lastEditedBy: string
     status: $Enums.ContentStatus
     createdAt: Date
@@ -2843,6 +2871,10 @@ export namespace Prisma {
     metaDescription?: boolean
     canonicalUrl?: boolean
     seoSchema?: boolean
+    blogMetaTitle?: boolean
+    blogMetaDescription?: boolean
+    blogCanonicalUrl?: boolean
+    blogSeoSchema?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2864,6 +2896,10 @@ export namespace Prisma {
     metaDescription?: boolean
     canonicalUrl?: boolean
     seoSchema?: boolean
+    blogMetaTitle?: boolean
+    blogMetaDescription?: boolean
+    blogCanonicalUrl?: boolean
+    blogSeoSchema?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2882,6 +2918,10 @@ export namespace Prisma {
     metaDescription?: boolean
     canonicalUrl?: boolean
     seoSchema?: boolean
+    blogMetaTitle?: boolean
+    blogMetaDescription?: boolean
+    blogCanonicalUrl?: boolean
+    blogSeoSchema?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2900,13 +2940,17 @@ export namespace Prisma {
     metaDescription?: boolean
     canonicalUrl?: boolean
     seoSchema?: boolean
+    blogMetaTitle?: boolean
+    blogMetaDescription?: boolean
+    blogCanonicalUrl?: boolean
+    blogSeoSchema?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "blogMetaTitle" | "blogMetaDescription" | "blogCanonicalUrl" | "blogSeoSchema" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Category$productsArgs<ExtArgs>
     blogs?: boolean | Category$blogsArgs<ExtArgs>
@@ -2933,6 +2977,10 @@ export namespace Prisma {
       metaDescription: string
       canonicalUrl: string
       seoSchema: string | null
+      blogMetaTitle: string | null
+      blogMetaDescription: string | null
+      blogCanonicalUrl: string | null
+      blogSeoSchema: string | null
       lastEditedBy: string
       status: $Enums.ContentStatus
       createdAt: Date
@@ -3373,6 +3421,10 @@ export namespace Prisma {
     readonly metaDescription: FieldRef<"Category", 'String'>
     readonly canonicalUrl: FieldRef<"Category", 'String'>
     readonly seoSchema: FieldRef<"Category", 'String'>
+    readonly blogMetaTitle: FieldRef<"Category", 'String'>
+    readonly blogMetaDescription: FieldRef<"Category", 'String'>
+    readonly blogCanonicalUrl: FieldRef<"Category", 'String'>
+    readonly blogSeoSchema: FieldRef<"Category", 'String'>
     readonly lastEditedBy: FieldRef<"Category", 'String'>
     readonly status: FieldRef<"Category", 'ContentStatus'>
     readonly createdAt: FieldRef<"Category", 'DateTime'>
@@ -10624,6 +10676,10 @@ export namespace Prisma {
     metaDescription: 'metaDescription',
     canonicalUrl: 'canonicalUrl',
     seoSchema: 'seoSchema',
+    blogMetaTitle: 'blogMetaTitle',
+    blogMetaDescription: 'blogMetaDescription',
+    blogCanonicalUrl: 'blogCanonicalUrl',
+    blogSeoSchema: 'blogSeoSchema',
     lastEditedBy: 'lastEditedBy',
     status: 'status',
     createdAt: 'createdAt',
@@ -10987,6 +11043,10 @@ export namespace Prisma {
     metaDescription?: StringFilter<"Category"> | string
     canonicalUrl?: StringFilter<"Category"> | string
     seoSchema?: StringNullableFilter<"Category"> | string | null
+    blogMetaTitle?: StringNullableFilter<"Category"> | string | null
+    blogMetaDescription?: StringNullableFilter<"Category"> | string | null
+    blogCanonicalUrl?: StringNullableFilter<"Category"> | string | null
+    blogSeoSchema?: StringNullableFilter<"Category"> | string | null
     lastEditedBy?: StringFilter<"Category"> | string
     status?: EnumContentStatusFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeFilter<"Category"> | Date | string
@@ -11007,6 +11067,10 @@ export namespace Prisma {
     metaDescription?: SortOrder
     canonicalUrl?: SortOrder
     seoSchema?: SortOrderInput | SortOrder
+    blogMetaTitle?: SortOrderInput | SortOrder
+    blogMetaDescription?: SortOrderInput | SortOrder
+    blogCanonicalUrl?: SortOrderInput | SortOrder
+    blogSeoSchema?: SortOrderInput | SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -11030,6 +11094,10 @@ export namespace Prisma {
     metaDescription?: StringFilter<"Category"> | string
     canonicalUrl?: StringFilter<"Category"> | string
     seoSchema?: StringNullableFilter<"Category"> | string | null
+    blogMetaTitle?: StringNullableFilter<"Category"> | string | null
+    blogMetaDescription?: StringNullableFilter<"Category"> | string | null
+    blogCanonicalUrl?: StringNullableFilter<"Category"> | string | null
+    blogSeoSchema?: StringNullableFilter<"Category"> | string | null
     lastEditedBy?: StringFilter<"Category"> | string
     status?: EnumContentStatusFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeFilter<"Category"> | Date | string
@@ -11050,6 +11118,10 @@ export namespace Prisma {
     metaDescription?: SortOrder
     canonicalUrl?: SortOrder
     seoSchema?: SortOrderInput | SortOrder
+    blogMetaTitle?: SortOrderInput | SortOrder
+    blogMetaDescription?: SortOrderInput | SortOrder
+    blogCanonicalUrl?: SortOrderInput | SortOrder
+    blogSeoSchema?: SortOrderInput | SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -11074,6 +11146,10 @@ export namespace Prisma {
     metaDescription?: StringWithAggregatesFilter<"Category"> | string
     canonicalUrl?: StringWithAggregatesFilter<"Category"> | string
     seoSchema?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    blogMetaTitle?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    blogMetaDescription?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    blogCanonicalUrl?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    blogSeoSchema?: StringNullableWithAggregatesFilter<"Category"> | string | null
     lastEditedBy?: StringWithAggregatesFilter<"Category"> | string
     status?: EnumContentStatusWithAggregatesFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
@@ -11738,6 +11814,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -11758,6 +11838,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -11778,6 +11862,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11798,6 +11886,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11818,6 +11910,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -11836,6 +11932,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11854,6 +11954,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12756,6 +12860,10 @@ export namespace Prisma {
     metaDescription?: SortOrder
     canonicalUrl?: SortOrder
     seoSchema?: SortOrder
+    blogMetaTitle?: SortOrder
+    blogMetaDescription?: SortOrder
+    blogCanonicalUrl?: SortOrder
+    blogSeoSchema?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -12772,6 +12880,10 @@ export namespace Prisma {
     metaDescription?: SortOrder
     canonicalUrl?: SortOrder
     seoSchema?: SortOrder
+    blogMetaTitle?: SortOrder
+    blogMetaDescription?: SortOrder
+    blogCanonicalUrl?: SortOrder
+    blogSeoSchema?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -12788,6 +12900,10 @@ export namespace Prisma {
     metaDescription?: SortOrder
     canonicalUrl?: SortOrder
     seoSchema?: SortOrder
+    blogMetaTitle?: SortOrder
+    blogMetaDescription?: SortOrder
+    blogCanonicalUrl?: SortOrder
+    blogSeoSchema?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -13787,6 +13903,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -13806,6 +13926,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -13841,6 +13965,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13860,6 +13988,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13879,6 +14011,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -13898,6 +14034,10 @@ export namespace Prisma {
     metaDescription: string
     canonicalUrl: string
     seoSchema?: string | null
+    blogMetaTitle?: string | null
+    blogMetaDescription?: string | null
+    blogCanonicalUrl?: string | null
+    blogSeoSchema?: string | null
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -13933,6 +14073,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13952,6 +14096,10 @@ export namespace Prisma {
     metaDescription?: StringFieldUpdateOperationsInput | string
     canonicalUrl?: StringFieldUpdateOperationsInput | string
     seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -6,6 +6,26 @@ const imageSchema = z
 
 const status = z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]);
 
+/**
+ * Optional free-text field: an empty string from a form is stored as null.
+ * `.optional()` stays outermost so an absent key is left out of the update
+ * payload entirely instead of being nulled.
+ */
+const optionalText = z
+  .string()
+  .trim()
+  .nullable()
+  .transform((v) => v || null)
+  .optional();
+
+/** SEO for the category's blog listing page — every field optional. */
+const blogSeoFields = {
+  blogMetaTitle: optionalText,
+  blogMetaDescription: optionalText,
+  blogCanonicalUrl: optionalText,
+  blogSeoSchema: optionalText,
+};
+
 export const createCategorySchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
   description: z.string().trim().min(1, "Description is required"),
@@ -17,6 +37,7 @@ export const createCategorySchema = z.object({
   metaDescription: z.string().trim().min(1, "Meta description is required"),
   canonicalUrl: z.string().trim().min(1, "Canonical URL is required"),
   seoSchema: z.string().trim().optional().nullable(),
+  ...blogSeoFields,
   status: status.optional(),
 });
 
@@ -32,6 +53,7 @@ export const updateCategorySchema = z
     metaDescription: z.string().trim().min(1).optional(),
     canonicalUrl: z.string().trim().min(1).optional(),
     seoSchema: z.string().trim().optional().nullable(),
+    ...blogSeoFields,
     status: status.optional(),
   })
   .refine((data) => Object.keys(data).length > 0, {
