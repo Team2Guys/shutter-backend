@@ -1,12 +1,38 @@
-import createError from "http-errors";
+import { GraphQLError } from "graphql";
 
 import { env } from "#config/index.js";
 
 const { NODE_ENV, BACKEND_URL } = env;
 
+/** HTTP status → GraphQL `extensions.code`, so clients can branch on the cause. */
+const ERROR_CODE_BY_STATUS = {
+  400: "BAD_USER_INPUT",
+  401: "UNAUTHENTICATED",
+  403: "FORBIDDEN",
+  404: "NOT_FOUND",
+  409: "CONFLICT",
+};
+
 /**
- * Wrap a resolver so any thrown / rejected error becomes a proper http-error
- * (preserving the original status code where available).
+ * Normalize a thrown error into a GraphQLError that carries an
+ * `extensions.code`. A GraphQLError already sets its own code (the auth guards
+ * in verify.lib.js do), so it passes straight through — re-wrapping it would
+ * lose the code and everything would surface as INTERNAL_SERVER_ERROR.
+ */
+const toGraphQLError = (error) => {
+  if (error instanceof GraphQLError) return error;
+
+  const status = error.status || error.statusCode || 500;
+  const code = ERROR_CODE_BY_STATUS[status] || "INTERNAL_SERVER_ERROR";
+  return new GraphQLError(error.message, {
+    extensions: { code, http: { status } },
+    originalError: error,
+  });
+};
+
+/**
+ * Wrap a resolver so any thrown / rejected error becomes a GraphQLError with a
+ * status-derived error code (preserving the original status where available).
  */
 export const handlePromise =
   (fn) =>
@@ -15,12 +41,12 @@ export const handlePromise =
       const result = fn(...args);
       if (result && typeof result.then === "function") {
         return result.catch((error) => {
-          throw createError(error.status || error.statusCode || 500, error.message);
+          throw toGraphQLError(error);
         });
       }
       return result;
     } catch (error) {
-      throw createError(error.status || error.statusCode || 500, error.message);
+      throw toGraphQLError(error);
     }
   };
 

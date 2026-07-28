@@ -37,18 +37,26 @@ model Category {
   id String @id @default(uuid()) @db.Uuid
 
   // Core fields
-  name            String        @unique
-  description     String        @db.Text()
+  name            String  @unique
+  description     String  @db.Text()
   breadcrumb      String
-  bannerImage     Json          @default("{\"imageUrl\": \"https://placehold.co/1440x500?text=Banner+Image\"}")
-  path            String        @unique
-  posterImage     Json          @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Product+Image\"}")
+  bannerImage     Json    @default("{\"imageUrl\": \"https://placehold.co/1440x500?text=Banner+Image\"}")
+  path            String  @unique
+  posterImage     Json    @default("{\"imageUrl\": \"https://placehold.co/600x600?text=Product+Image\"}")
   metaTitle       String
   metaDescription String
   canonicalUrl    String
-  seoSchema       String?       @db.Text()
-  lastEditedBy    String
-  status          ContentStatus @default(PUBLISHED)
+  seoSchema       String? @db.Text()
+
+  // SEO for the category's blog listing page (/blogs/{path}). Optional — the
+  // product-category SEO fields above are used as a fallback when unset.
+  blogMetaTitle       String? @db.Text()
+  blogMetaDescription String? @db.Text()
+  blogCanonicalUrl    String?
+  blogSeoSchema       String? @db.Text()
+
+  lastEditedBy String
+  status       ContentStatus @default(PUBLISHED)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

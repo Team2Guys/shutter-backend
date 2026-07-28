@@ -47,6 +47,14 @@ model Category {
   metaDescription String
   canonicalUrl    String
   seoSchema       String?       @db.Text()
+
+  // SEO for the category's blog listing page (/blogs/{path}). Optional — the
+  // product-category SEO fields above are used as a fallback when unset.
+  blogMetaTitle       String? @db.Text()
+  blogMetaDescription String? @db.Text()
+  blogCanonicalUrl    String?
+  blogSeoSchema       String? @db.Text()
+
   lastEditedBy    String
   status          ContentStatus @default(PUBLISHED)
 

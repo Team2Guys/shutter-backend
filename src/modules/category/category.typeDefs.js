@@ -13,6 +13,10 @@ export const categoryTypeDefs = gql`
     metaDescription: String!
     canonicalUrl: String!
     seoSchema: String
+    blogMetaTitle: String
+    blogMetaDescription: String
+    blogCanonicalUrl: String
+    blogSeoSchema: String
     lastEditedBy: String!
     status: ContentStatus!
     createdAt: DateTime!
@@ -32,6 +36,10 @@ export const categoryTypeDefs = gql`
     metaDescription: String!
     canonicalUrl: String!
     seoSchema: String
+    blogMetaTitle: String
+    blogMetaDescription: String
+    blogCanonicalUrl: String
+    blogSeoSchema: String
     status: ContentStatus
   }
 
@@ -46,6 +54,10 @@ export const categoryTypeDefs = gql`
     metaDescription: String
     canonicalUrl: String
     seoSchema: String
+    blogMetaTitle: String
+    blogMetaDescription: String
+    blogCanonicalUrl: String
+    blogSeoSchema: String
     status: ContentStatus
   }
 
@@ -65,6 +77,10 @@ export const categoryTypeDefs = gql`
     metaDescription: String
     canonicalUrl: String
     seoSchema: String
+    blogMetaTitle: String
+    blogMetaDescription: String
+    blogCanonicalUrl: String
+    blogSeoSchema: String
     status: ContentStatus
   }
 

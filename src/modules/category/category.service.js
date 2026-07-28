@@ -16,6 +16,10 @@ const IMPORTABLE_FIELDS = [
   "metaDescription",
   "canonicalUrl",
   "seoSchema",
+  "blogMetaTitle",
+  "blogMetaDescription",
+  "blogCanonicalUrl",
+  "blogSeoSchema",
   "status",
 ];
 
