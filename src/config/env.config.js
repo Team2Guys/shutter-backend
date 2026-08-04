@@ -55,6 +55,11 @@ const validators = {
   // Empty = verification disabled, so forms keep working until keys are set.
   RECAPTCHA_SECRET_KEY: str({ default: "", desc: "Google reCAPTCHA v2 secret key" }),
 
+  TWOGUYS_LEAD_URL: url({
+    default: "https://stage.twoguys.ae/shutter/lead",
+    desc: "TwoGuys CRM lead intake endpoint",
+  }),
+
   // Bootstrap super admin (created via `npm run db:seed`)
   SUPER_ADMIN_NAME: str({ default: "Super Admin", desc: "Bootstrap super admin name" }),
   SUPER_ADMIN_EMAIL: email({ desc: "Bootstrap super admin email" }),

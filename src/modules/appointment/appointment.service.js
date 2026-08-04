@@ -1,5 +1,5 @@
 import { env, NOTIFICATION_RECIPIENTS } from "#config/index.js";
-import { prisma, sendEmail, logger } from "#lib/index.js";
+import { prisma, sendEmail, logger, forwardAppointmentLead } from "#lib/index.js";
 
 const { FRONTEND_URL } = env;
 
@@ -69,7 +69,8 @@ export const appointmentService = {
 
   create: async (input) => {
     const appointment = await prisma.appointment.create({ data: input });
-    await sendAppointmentEmails(appointment);
+    sendAppointmentEmails(appointment);
+    forwardAppointmentLead(appointment);
     return appointment;
   },
 };
