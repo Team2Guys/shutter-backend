@@ -20,6 +20,7 @@ export const forwardAppointmentLead = async (appointment) => {
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+logger.info(`[lead-body] TwoGuys lead started: ${JSON.stringify({params: { ...body }})}`);
 
   try {
     const res = await fetch(TWOGUYS_LEAD_URL, {
@@ -29,6 +30,8 @@ export const forwardAppointmentLead = async (appointment) => {
       signal: controller.signal,
     });
 
+    logger.info(`[lead-forwarder] TwoGuys lead push response: ${res.status} ${res.statusText}`);
+    logger.info(`[lead-forwarder] TwoGuys lead push response body: ${await res.text()}`);
     const responseBody = await res.text();
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText} - ${responseBody}`);
