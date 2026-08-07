@@ -31,8 +31,14 @@ logger.info(`[lead-body] TwoGuys lead started: ${JSON.stringify({params: { ...bo
     });
 
     logger.info(`[lead-forwarder] TwoGuys lead push response: ${res.status} ${res.statusText}`);
-    logger.info(`[lead-forwarder] TwoGuys lead push response body: ${await res.text()}`);
     const responseBody = await res.text();
+    logger.info(`[lead-forwarder] TwoGuys lead push response: ${JSON.stringify({
+      status: res.status,
+      statusText: res.statusText,
+      ok: res.ok,
+      url: res.url,
+      headers: Object.fromEntries(res.headers),
+    })}`);
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText} - ${responseBody}`);
     }
