@@ -25,12 +25,11 @@ export const forwardAppointmentLead = async (appointment) => {
     const res = await fetch(TWOGUYS_LEAD_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify({params: { ...body }}),
       signal: controller.signal,
     });
 
     const responseBody = await res.text();
-
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText} - ${responseBody}`);
     }
