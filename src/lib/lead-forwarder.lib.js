@@ -16,7 +16,17 @@ export const forwardAppointmentLead = async (appointment) => {
     whatsapp_number: appointment.whatsapp || appointment.phone,
     email: appointment.email,
     message: appointment.message || "",
+    availability: {
+      date: appointment.preferredDate || "",
+      time: appointment.availableTime || "",
+    },
+    emirate: appointment.emirate || "",
+    area: appointment.area || "",
+    shutter_type: appointment.shutterTypes?.join(", ") || "",
+    available_time: appointment.availableTime || "",
   };
+
+  
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
