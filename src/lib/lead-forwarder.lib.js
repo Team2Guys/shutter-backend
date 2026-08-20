@@ -47,7 +47,7 @@ logger.info(`[lead-forwarder] TwoGuys lead started: ${JSON.stringify({params: { 
     })}`);
 
     if (!res.ok) {
-      throw new Error(`${res.status} ${res.statusText} - ${responseBody}`);
+      throw new Error(`${res.status} ${res.statusText}`);
     }
 
           const responseBody = await res.json();
