@@ -56,7 +56,7 @@ const validators = {
   RECAPTCHA_SECRET_KEY: str({ default: "", desc: "Google reCAPTCHA v2 secret key" }),
 
   TWOGUYS_LEAD_URL: url({
-    default: "https://stage.twoguys.ae/shutter/lead",
+    default: "https://odoo.twoguys.ae/shutter/lead",
     desc: "TwoGuys CRM lead intake endpoint",
   }),
 

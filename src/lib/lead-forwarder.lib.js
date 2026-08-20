@@ -3,9 +3,6 @@ import { logger } from "./logger.lib.js";
 
 const { TWOGUYS_LEAD_URL } = env;
 
-const REQUEST_TIMEOUT_MS = 10_000;
-
-
 export const forwardAppointmentLead = async (appointment) => {
   const body = {
     name: appointment.name,
@@ -23,38 +20,32 @@ export const forwardAppointmentLead = async (appointment) => {
     available_time: appointment.availableTime || "",
   };
 
-  
-
-logger.info(`[lead-forwarder] TwoGuys lead started: ${JSON.stringify({params: { ...body }})}`);
+  logger.info(`[lead-forwarder] lead push started: appointment=${appointment.id} url=${TWOGUYS_LEAD_URL}`);
 
   try {
     const res = await fetch(TWOGUYS_LEAD_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({params: { ...body }}),
+      body: JSON.stringify({ params: { ...body } }),
     });
 
-    logger.info(`[lead-forwarder] shutter lead push response: ${res.status} ${res.statusText}`);
-
-
-
-    logger.info(`[lead-forwarder] shutter lead push response: ${JSON.stringify({
-      status: res.status,
-      statusText: res.statusText,
-      ok: res.ok,
-      url: res.url,
-      headers: Object.fromEntries(res.headers),
-    })}`);
+    logger.info(`[lead-forwarder] lead push response: appointment=${appointment.id} ${res.status} ${res.statusText}`);
 
     if (!res.ok) {
-      throw new Error(`${res.status} ${res.statusText}`);
+      throw new Error(`HTTP ${res.status} ${res.statusText}`);
     }
 
-          const responseBody = await res.json();
-    logger.info(`[lead-forwarder] shutter lead push succeeded: ${JSON.stringify(responseBody)}`);
-  } catch (error) {
-    logger.error(`[lead-forwarder] shutter lead push error: ${JSON.stringify(error)}`);
-    logger.error(`[lead-forwarder] shutter lead push failed: ${error.message}`);
-  } 
-};
+    const payload = await res.json();
 
+    if (payload?.error) {
+      throw new Error(`remote error: ${payload.error.data?.message || payload.error.message}`);
+    }
+
+    logger.info(`[lead-forwarder] lead push succeeded: appointment=${appointment.id} ${JSON.stringify(payload)}`);
+  } catch (error) {
+    // Swallowed on purpose: lead forwarding must never fail the appointment booking.
+    
+    logger.error(`[lead-forwarder] lead push failed: appointment=${JSON.stringify(error)}`);
+    logger.error(`[lead-forwarder] lead push failed: appointment=${appointment.id} ${error.stack || error.message}`);
+  }
+};

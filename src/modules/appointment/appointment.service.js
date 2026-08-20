@@ -69,8 +69,14 @@ export const appointmentService = {
 
   create: async (input) => {
     const appointment = await prisma.appointment.create({ data: input });
-    sendAppointmentEmails(appointment);
-    forwardAppointmentLead(appointment);
+    // Fire-and-forget: neither must fail the booking, and an escaping rejection
+    // would take the process down under Node's default unhandled-rejection mode.
+    sendAppointmentEmails(appointment).catch((error) =>
+      logger.error(`[appointment] email notification crashed: ${error.stack || error.message}`)
+    );
+    forwardAppointmentLead(appointment).catch((error) =>
+      logger.error(`[appointment] lead forwarding crashed: ${error.stack || error.message}`)
+    );
     return appointment;
   },
 };
