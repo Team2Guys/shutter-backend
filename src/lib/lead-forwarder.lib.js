@@ -5,10 +5,7 @@ const { TWOGUYS_LEAD_URL } = env;
 
 const REQUEST_TIMEOUT_MS = 10_000;
 
-/**
- * Forwards a booked appointment to the TwoGuys CRM as a lead.
- * Never throws — a CRM outage must not break the booking flow.
- */
+
 export const forwardAppointmentLead = async (appointment) => {
   const body = {
     name: appointment.name,
@@ -28,8 +25,6 @@ export const forwardAppointmentLead = async (appointment) => {
 
   
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 logger.info(`[lead-forwarder] TwoGuys lead started: ${JSON.stringify({params: { ...body }})}`);
 
   try {
@@ -37,27 +32,29 @@ logger.info(`[lead-forwarder] TwoGuys lead started: ${JSON.stringify({params: { 
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({params: { ...body }}),
-      signal: controller.signal,
     });
 
-    logger.info(`[lead-forwarder] TwoGuys lead push response: ${res.status} ${res.statusText}`);
-    const responseBody = await res.text();
-    logger.info(`[lead-forwarder] TwoGuys lead push response: ${JSON.stringify({
+    logger.info(`[lead-forwarder] shutter lead push response: ${res.status} ${res.statusText}`);
+
+
+
+    logger.info(`[lead-forwarder] shutter lead push response: ${JSON.stringify({
       status: res.status,
       statusText: res.statusText,
       ok: res.ok,
       url: res.url,
       headers: Object.fromEntries(res.headers),
     })}`);
+
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText} - ${responseBody}`);
     }
 
-    logger.info(`[lead-forwarder] TwoGuys lead push succeeded: ${responseBody}`);
+          const responseBody = await res.json();
+    logger.info(`[lead-forwarder] shutter lead push succeeded: ${JSON.stringify(responseBody)}`);
   } catch (error) {
-    logger.error(`[lead-forwarder] TwoGuys lead push failed: ${error.message}`);
-  } finally {
-    clearTimeout(timeout);
-  }
+    logger.error(`[lead-forwarder] shutter lead push error: ${JSON.stringify(error)}`);
+    logger.error(`[lead-forwarder] shutter lead push failed: ${error.message}`);
+  } 
 };
 
