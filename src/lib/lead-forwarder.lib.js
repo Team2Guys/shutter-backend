@@ -20,16 +20,17 @@ export const forwardAppointmentLead = async (appointment) => {
     available_time: appointment.availableTime || "",
   };
 
-  logger.info(`[lead-forwarder] lead push started: appointment=${appointment.id} url=${TWOGUYS_LEAD_URL}`);
+  const jsonbody = JSON.stringify({ params: { ...body } });
+  logger.info(`[lead-forwarder] lead push started: appointment=${jsonbody} url=${TWOGUYS_LEAD_URL}`);
 
   try {
     const res = await fetch(TWOGUYS_LEAD_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ params: { ...body } }),
+      body: jsonbody,
     });
 
-    logger.info(`[lead-forwarder] lead push response: appointment=${appointment.id} ${res.status} ${res.statusText}`);
+    logger.info(`[lead-forwarder] lead push response: appointment=${jsonbody} ${res.status} ${res.statusText}`);
 
     if (!res.ok) {
       throw new Error(`HTTP ${res.status} ${res.statusText}`);
