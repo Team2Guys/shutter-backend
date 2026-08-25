@@ -32,6 +32,7 @@ const sendAppointmentEmails = async (appointment) => {
     location,
     preferredDate: formatPreferredDate(appointment.preferredDate),
     availableTime: appointment.availableTime,
+    hearAboutUs: appointment.hearAboutUs || "Not provided",
     message: appointment.message || "—",
     shutterTypesHtml,
     FRONTEND_URL,

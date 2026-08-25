@@ -223,6 +223,7 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   availableTime: 'availableTime',
   emirate: 'emirate',
   area: 'area',
+  hearAboutUs: 'hearAboutUs',
   message: 'message',
   shutterTypes: 'shutterTypes',
   createdAt: 'createdAt'

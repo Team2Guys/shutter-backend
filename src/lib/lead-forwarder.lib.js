@@ -16,6 +16,7 @@ export const forwardAppointmentLead = async (appointment) => {
     },
     emirate: appointment.emirate || "",
     area: appointment.area || "",
+    referral_source: appointment.hearAboutUs || "",
     shutter_type: appointment.shutterTypes?.join(", ") || "",
     available_time: appointment.availableTime || "",
   };
