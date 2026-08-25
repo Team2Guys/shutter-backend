@@ -148,6 +148,7 @@ model Appointment {
   availableTime String
   emirate       String
   area          String
+  hearAboutUs   String?
   message       String?  @db.Text()
   shutterTypes  String[]
   createdAt     DateTime @default(now())

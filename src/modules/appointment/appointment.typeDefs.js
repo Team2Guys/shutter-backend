@@ -11,6 +11,7 @@ export const appointmentTypeDefs = gql`
     availableTime: String!
     emirate: String!
     area: String!
+    hearAboutUs: String
     message: String
     shutterTypes: [String!]!
     createdAt: DateTime!
@@ -25,6 +26,7 @@ export const appointmentTypeDefs = gql`
     availableTime: String!
     emirate: String!
     area: String!
+    hearAboutUs: String
     message: String
     shutterTypes: [String!]
     recaptchaToken: String

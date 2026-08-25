@@ -7437,6 +7437,7 @@ export namespace Prisma {
     availableTime: string | null
     emirate: string | null
     area: string | null
+    hearAboutUs: string | null
     message: string | null
     createdAt: Date | null
   }
@@ -7451,6 +7452,7 @@ export namespace Prisma {
     availableTime: string | null
     emirate: string | null
     area: string | null
+    hearAboutUs: string | null
     message: string | null
     createdAt: Date | null
   }
@@ -7465,6 +7467,7 @@ export namespace Prisma {
     availableTime: number
     emirate: number
     area: number
+    hearAboutUs: number
     message: number
     shutterTypes: number
     createdAt: number
@@ -7482,6 +7485,7 @@ export namespace Prisma {
     availableTime?: true
     emirate?: true
     area?: true
+    hearAboutUs?: true
     message?: true
     createdAt?: true
   }
@@ -7496,6 +7500,7 @@ export namespace Prisma {
     availableTime?: true
     emirate?: true
     area?: true
+    hearAboutUs?: true
     message?: true
     createdAt?: true
   }
@@ -7510,6 +7515,7 @@ export namespace Prisma {
     availableTime?: true
     emirate?: true
     area?: true
+    hearAboutUs?: true
     message?: true
     shutterTypes?: true
     createdAt?: true
@@ -7598,6 +7604,7 @@ export namespace Prisma {
     availableTime: string
     emirate: string
     area: string
+    hearAboutUs: string | null
     message: string | null
     shutterTypes: string[]
     createdAt: Date
@@ -7630,6 +7637,7 @@ export namespace Prisma {
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
+    hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
     createdAt?: boolean
@@ -7645,6 +7653,7 @@ export namespace Prisma {
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
+    hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
     createdAt?: boolean
@@ -7660,6 +7669,7 @@ export namespace Prisma {
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
+    hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
     createdAt?: boolean
@@ -7675,12 +7685,13 @@ export namespace Prisma {
     availableTime?: boolean
     emirate?: boolean
     area?: boolean
+    hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
     createdAt?: boolean
   }
 
-  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "preferredDate" | "availableTime" | "emirate" | "area" | "message" | "shutterTypes" | "createdAt", ExtArgs["result"]["appointment"]>
+  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "preferredDate" | "availableTime" | "emirate" | "area" | "hearAboutUs" | "message" | "shutterTypes" | "createdAt", ExtArgs["result"]["appointment"]>
 
   export type $AppointmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Appointment"
@@ -7695,6 +7706,7 @@ export namespace Prisma {
       availableTime: string
       emirate: string
       area: string
+      hearAboutUs: string | null
       message: string | null
       shutterTypes: string[]
       createdAt: Date
@@ -8130,6 +8142,7 @@ export namespace Prisma {
     readonly availableTime: FieldRef<"Appointment", 'String'>
     readonly emirate: FieldRef<"Appointment", 'String'>
     readonly area: FieldRef<"Appointment", 'String'>
+    readonly hearAboutUs: FieldRef<"Appointment", 'String'>
     readonly message: FieldRef<"Appointment", 'String'>
     readonly shutterTypes: FieldRef<"Appointment", 'String[]'>
     readonly createdAt: FieldRef<"Appointment", 'DateTime'>
@@ -10767,6 +10780,7 @@ export namespace Prisma {
     availableTime: 'availableTime',
     emirate: 'emirate',
     area: 'area',
+    hearAboutUs: 'hearAboutUs',
     message: 'message',
     shutterTypes: 'shutterTypes',
     createdAt: 'createdAt'
@@ -11506,6 +11520,7 @@ export namespace Prisma {
     availableTime?: StringFilter<"Appointment"> | string
     emirate?: StringFilter<"Appointment"> | string
     area?: StringFilter<"Appointment"> | string
+    hearAboutUs?: StringNullableFilter<"Appointment"> | string | null
     message?: StringNullableFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
     createdAt?: DateTimeFilter<"Appointment"> | Date | string
@@ -11521,6 +11536,7 @@ export namespace Prisma {
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
+    hearAboutUs?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
     shutterTypes?: SortOrder
     createdAt?: SortOrder
@@ -11539,6 +11555,7 @@ export namespace Prisma {
     availableTime?: StringFilter<"Appointment"> | string
     emirate?: StringFilter<"Appointment"> | string
     area?: StringFilter<"Appointment"> | string
+    hearAboutUs?: StringNullableFilter<"Appointment"> | string | null
     message?: StringNullableFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
     createdAt?: DateTimeFilter<"Appointment"> | Date | string
@@ -11554,6 +11571,7 @@ export namespace Prisma {
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
+    hearAboutUs?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
     shutterTypes?: SortOrder
     createdAt?: SortOrder
@@ -11575,6 +11593,7 @@ export namespace Prisma {
     availableTime?: StringWithAggregatesFilter<"Appointment"> | string
     emirate?: StringWithAggregatesFilter<"Appointment"> | string
     area?: StringWithAggregatesFilter<"Appointment"> | string
+    hearAboutUs?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     message?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
     createdAt?: DateTimeWithAggregatesFilter<"Appointment"> | Date | string
@@ -12385,6 +12404,7 @@ export namespace Prisma {
     availableTime: string
     emirate: string
     area: string
+    hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
     createdAt?: Date | string
@@ -12400,6 +12420,7 @@ export namespace Prisma {
     availableTime: string
     emirate: string
     area: string
+    hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
     createdAt?: Date | string
@@ -12415,6 +12436,7 @@ export namespace Prisma {
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
+    hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12430,6 +12452,7 @@ export namespace Prisma {
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
+    hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12445,6 +12468,7 @@ export namespace Prisma {
     availableTime: string
     emirate: string
     area: string
+    hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
     createdAt?: Date | string
@@ -12460,6 +12484,7 @@ export namespace Prisma {
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
+    hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12475,6 +12500,7 @@ export namespace Prisma {
     availableTime?: StringFieldUpdateOperationsInput | string
     emirate?: StringFieldUpdateOperationsInput | string
     area?: StringFieldUpdateOperationsInput | string
+    hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13154,6 +13180,7 @@ export namespace Prisma {
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
+    hearAboutUs?: SortOrder
     message?: SortOrder
     shutterTypes?: SortOrder
     createdAt?: SortOrder
@@ -13169,6 +13196,7 @@ export namespace Prisma {
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
+    hearAboutUs?: SortOrder
     message?: SortOrder
     createdAt?: SortOrder
   }
@@ -13183,6 +13211,7 @@ export namespace Prisma {
     availableTime?: SortOrder
     emirate?: SortOrder
     area?: SortOrder
+    hearAboutUs?: SortOrder
     message?: SortOrder
     createdAt?: SortOrder
   }

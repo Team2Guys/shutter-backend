@@ -17,6 +17,7 @@ export const createAppointmentSchema = z.object({
   availableTime: z.string().trim().min(1, "Preferred time is required"),
   emirate: z.string().trim().min(1, "Emirate is required"),
   area: z.string().trim().min(1, "Area is required"),
+  hearAboutUs: z.string().trim().optional().nullable(),
   message: z
     .string()
     .trim()
