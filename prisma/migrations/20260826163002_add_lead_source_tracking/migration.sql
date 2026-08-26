@@ -1,0 +1,17 @@
+-- AlterTable
+ALTER TABLE "Appointment" ADD COLUMN     "lead_source" TEXT,
+ADD COLUMN     "gclid" TEXT,
+ADD COLUMN     "fbclid" TEXT,
+ADD COLUMN     "msclkid" TEXT,
+ADD COLUMN     "ttclid" TEXT,
+ADD COLUMN     "epik" TEXT,
+ADD COLUMN     "ScCid" TEXT,
+ADD COLUMN     "li_fat_id" TEXT,
+ADD COLUMN     "twclid" TEXT,
+ADD COLUMN     "utm_source" TEXT,
+ADD COLUMN     "utm_medium" TEXT,
+ADD COLUMN     "utm_campaign" TEXT,
+ADD COLUMN     "utm_content" TEXT,
+ADD COLUMN     "utm_term" TEXT,
+ADD COLUMN     "utm_matchtype" TEXT,
+ADD COLUMN     "landing_referrer" TEXT;

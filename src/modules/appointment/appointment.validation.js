@@ -25,4 +25,21 @@ export const createAppointmentSchema = z.object({
     .optional()
     .nullable(),
   shutterTypes: z.array(z.string()).optional().default([]),
+
+  lead_source: z.string().trim().optional().nullable(),
+  gclid: z.string().trim().optional().nullable(),
+  fbclid: z.string().trim().optional().nullable(),
+  msclkid: z.string().trim().optional().nullable(),
+  ttclid: z.string().trim().optional().nullable(),
+  epik: z.string().trim().optional().nullable(),
+  ScCid: z.string().trim().optional().nullable(),
+  li_fat_id: z.string().trim().optional().nullable(),
+  twclid: z.string().trim().optional().nullable(),
+  utm_source: z.string().trim().optional().nullable(),
+  utm_medium: z.string().trim().optional().nullable(),
+  utm_campaign: z.string().trim().optional().nullable(),
+  utm_content: z.string().trim().optional().nullable(),
+  utm_term: z.string().trim().optional().nullable(),
+  utm_matchtype: z.string().trim().optional().nullable(),
+  landing_referrer: z.string().trim().optional().nullable(),
 });

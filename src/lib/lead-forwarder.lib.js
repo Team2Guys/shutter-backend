@@ -1,5 +1,6 @@
 import { env } from "#config/index.js";
 import { logger } from "./logger.lib.js";
+import { formatTrackedSource } from "./lead-source.lib.js";
 
 const { TWOGUYS_LEAD_URL } = env;
 
@@ -19,6 +20,25 @@ export const forwardAppointmentLead = async (appointment) => {
     referral_source: appointment.hearAboutUs || "",
     shutter_type: appointment.shutterTypes?.join(", ") || "",
     available_time: appointment.availableTime || "",
+    tracked_source: {
+      summary: formatTrackedSource(appointment) || null,
+      lead_source: appointment.lead_source ?? null,
+      gclid: appointment.gclid ?? null,
+      fbclid: appointment.fbclid ?? null,
+      msclkid: appointment.msclkid ?? null,
+      ttclid: appointment.ttclid ?? null,
+      epik: appointment.epik ?? null,
+      ScCid: appointment.ScCid ?? null,
+      li_fat_id: appointment.li_fat_id ?? null,
+      twclid: appointment.twclid ?? null,
+      utm_source: appointment.utm_source ?? null,
+      utm_medium: appointment.utm_medium ?? null,
+      utm_campaign: appointment.utm_campaign ?? null,
+      utm_content: appointment.utm_content ?? null,
+      utm_term: appointment.utm_term ?? null,
+      utm_matchtype: appointment.utm_matchtype ?? null,
+      landing_referrer: appointment.landing_referrer ?? null,
+    },
   };
 
   const jsonbody = JSON.stringify({ params: { ...body } });

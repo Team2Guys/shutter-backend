@@ -14,6 +14,22 @@ export const appointmentTypeDefs = gql`
     hearAboutUs: String
     message: String
     shutterTypes: [String!]!
+    lead_source: String
+    gclid: String
+    fbclid: String
+    msclkid: String
+    ttclid: String
+    epik: String
+    ScCid: String
+    li_fat_id: String
+    twclid: String
+    utm_source: String
+    utm_medium: String
+    utm_campaign: String
+    utm_content: String
+    utm_term: String
+    utm_matchtype: String
+    landing_referrer: String
     createdAt: DateTime!
   }
 
@@ -30,6 +46,22 @@ export const appointmentTypeDefs = gql`
     message: String
     shutterTypes: [String!]
     recaptchaToken: String
+    lead_source: String
+    gclid: String
+    fbclid: String
+    msclkid: String
+    ttclid: String
+    epik: String
+    ScCid: String
+    li_fat_id: String
+    twclid: String
+    utm_source: String
+    utm_medium: String
+    utm_campaign: String
+    utm_content: String
+    utm_term: String
+    utm_matchtype: String
+    landing_referrer: String
   }
 
   type Query {

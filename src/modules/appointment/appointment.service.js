@@ -1,5 +1,5 @@
 import { env, NOTIFICATION_RECIPIENTS } from "#config/index.js";
-import { prisma, sendEmail, logger, forwardAppointmentLead } from "#lib/index.js";
+import { prisma, sendEmail, logger, forwardAppointmentLead, formatTrackedSource } from "#lib/index.js";
 
 const { FRONTEND_URL } = env;
 
@@ -51,11 +51,17 @@ const sendAppointmentEmails = async (appointment) => {
 
   // 2) Notification to the company inboxes
   if (NOTIFICATION_RECIPIENTS.length) {
+    const trackedSource = formatTrackedSource(appointment);
+    const sourceLineHtml = trackedSource
+      ? `<tr><td><strong>Source (Tracked):</strong> ${escapeHtml(trackedSource)}</td></tr>`
+      : "";
+
     try {
       await sendEmail("appointment-admin", {
         to: NOTIFICATION_RECIPIENTS,
         subject: "Book A Free Design Visit Shutters.ae",
         ...vars,
+        sourceLineHtml,
       });
     } catch (error) {
       logger.error(`[appointment] admin email failed: ${error.message}`);
