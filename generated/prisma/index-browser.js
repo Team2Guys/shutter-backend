@@ -226,6 +226,22 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   hearAboutUs: 'hearAboutUs',
   message: 'message',
   shutterTypes: 'shutterTypes',
+  lead_source: 'lead_source',
+  gclid: 'gclid',
+  fbclid: 'fbclid',
+  msclkid: 'msclkid',
+  ttclid: 'ttclid',
+  epik: 'epik',
+  ScCid: 'ScCid',
+  li_fat_id: 'li_fat_id',
+  twclid: 'twclid',
+  utm_source: 'utm_source',
+  utm_medium: 'utm_medium',
+  utm_campaign: 'utm_campaign',
+  utm_content: 'utm_content',
+  utm_term: 'utm_term',
+  utm_matchtype: 'utm_matchtype',
+  landing_referrer: 'landing_referrer',
   createdAt: 'createdAt'
 };
 

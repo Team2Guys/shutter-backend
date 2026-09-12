@@ -7439,6 +7439,22 @@ export namespace Prisma {
     area: string | null
     hearAboutUs: string | null
     message: string | null
+    lead_source: string | null
+    gclid: string | null
+    fbclid: string | null
+    msclkid: string | null
+    ttclid: string | null
+    epik: string | null
+    ScCid: string | null
+    li_fat_id: string | null
+    twclid: string | null
+    utm_source: string | null
+    utm_medium: string | null
+    utm_campaign: string | null
+    utm_content: string | null
+    utm_term: string | null
+    utm_matchtype: string | null
+    landing_referrer: string | null
     createdAt: Date | null
   }
 
@@ -7454,6 +7470,22 @@ export namespace Prisma {
     area: string | null
     hearAboutUs: string | null
     message: string | null
+    lead_source: string | null
+    gclid: string | null
+    fbclid: string | null
+    msclkid: string | null
+    ttclid: string | null
+    epik: string | null
+    ScCid: string | null
+    li_fat_id: string | null
+    twclid: string | null
+    utm_source: string | null
+    utm_medium: string | null
+    utm_campaign: string | null
+    utm_content: string | null
+    utm_term: string | null
+    utm_matchtype: string | null
+    landing_referrer: string | null
     createdAt: Date | null
   }
 
@@ -7470,6 +7502,22 @@ export namespace Prisma {
     hearAboutUs: number
     message: number
     shutterTypes: number
+    lead_source: number
+    gclid: number
+    fbclid: number
+    msclkid: number
+    ttclid: number
+    epik: number
+    ScCid: number
+    li_fat_id: number
+    twclid: number
+    utm_source: number
+    utm_medium: number
+    utm_campaign: number
+    utm_content: number
+    utm_term: number
+    utm_matchtype: number
+    landing_referrer: number
     createdAt: number
     _all: number
   }
@@ -7487,6 +7535,22 @@ export namespace Prisma {
     area?: true
     hearAboutUs?: true
     message?: true
+    lead_source?: true
+    gclid?: true
+    fbclid?: true
+    msclkid?: true
+    ttclid?: true
+    epik?: true
+    ScCid?: true
+    li_fat_id?: true
+    twclid?: true
+    utm_source?: true
+    utm_medium?: true
+    utm_campaign?: true
+    utm_content?: true
+    utm_term?: true
+    utm_matchtype?: true
+    landing_referrer?: true
     createdAt?: true
   }
 
@@ -7502,6 +7566,22 @@ export namespace Prisma {
     area?: true
     hearAboutUs?: true
     message?: true
+    lead_source?: true
+    gclid?: true
+    fbclid?: true
+    msclkid?: true
+    ttclid?: true
+    epik?: true
+    ScCid?: true
+    li_fat_id?: true
+    twclid?: true
+    utm_source?: true
+    utm_medium?: true
+    utm_campaign?: true
+    utm_content?: true
+    utm_term?: true
+    utm_matchtype?: true
+    landing_referrer?: true
     createdAt?: true
   }
 
@@ -7518,6 +7598,22 @@ export namespace Prisma {
     hearAboutUs?: true
     message?: true
     shutterTypes?: true
+    lead_source?: true
+    gclid?: true
+    fbclid?: true
+    msclkid?: true
+    ttclid?: true
+    epik?: true
+    ScCid?: true
+    li_fat_id?: true
+    twclid?: true
+    utm_source?: true
+    utm_medium?: true
+    utm_campaign?: true
+    utm_content?: true
+    utm_term?: true
+    utm_matchtype?: true
+    landing_referrer?: true
     createdAt?: true
     _all?: true
   }
@@ -7607,6 +7703,22 @@ export namespace Prisma {
     hearAboutUs: string | null
     message: string | null
     shutterTypes: string[]
+    lead_source: string | null
+    gclid: string | null
+    fbclid: string | null
+    msclkid: string | null
+    ttclid: string | null
+    epik: string | null
+    ScCid: string | null
+    li_fat_id: string | null
+    twclid: string | null
+    utm_source: string | null
+    utm_medium: string | null
+    utm_campaign: string | null
+    utm_content: string | null
+    utm_term: string | null
+    utm_matchtype: string | null
+    landing_referrer: string | null
     createdAt: Date
     _count: AppointmentCountAggregateOutputType | null
     _min: AppointmentMinAggregateOutputType | null
@@ -7640,6 +7752,22 @@ export namespace Prisma {
     hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
+    lead_source?: boolean
+    gclid?: boolean
+    fbclid?: boolean
+    msclkid?: boolean
+    ttclid?: boolean
+    epik?: boolean
+    ScCid?: boolean
+    li_fat_id?: boolean
+    twclid?: boolean
+    utm_source?: boolean
+    utm_medium?: boolean
+    utm_campaign?: boolean
+    utm_content?: boolean
+    utm_term?: boolean
+    utm_matchtype?: boolean
+    landing_referrer?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["appointment"]>
 
@@ -7656,6 +7784,22 @@ export namespace Prisma {
     hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
+    lead_source?: boolean
+    gclid?: boolean
+    fbclid?: boolean
+    msclkid?: boolean
+    ttclid?: boolean
+    epik?: boolean
+    ScCid?: boolean
+    li_fat_id?: boolean
+    twclid?: boolean
+    utm_source?: boolean
+    utm_medium?: boolean
+    utm_campaign?: boolean
+    utm_content?: boolean
+    utm_term?: boolean
+    utm_matchtype?: boolean
+    landing_referrer?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["appointment"]>
 
@@ -7672,6 +7816,22 @@ export namespace Prisma {
     hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
+    lead_source?: boolean
+    gclid?: boolean
+    fbclid?: boolean
+    msclkid?: boolean
+    ttclid?: boolean
+    epik?: boolean
+    ScCid?: boolean
+    li_fat_id?: boolean
+    twclid?: boolean
+    utm_source?: boolean
+    utm_medium?: boolean
+    utm_campaign?: boolean
+    utm_content?: boolean
+    utm_term?: boolean
+    utm_matchtype?: boolean
+    landing_referrer?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["appointment"]>
 
@@ -7688,10 +7848,26 @@ export namespace Prisma {
     hearAboutUs?: boolean
     message?: boolean
     shutterTypes?: boolean
+    lead_source?: boolean
+    gclid?: boolean
+    fbclid?: boolean
+    msclkid?: boolean
+    ttclid?: boolean
+    epik?: boolean
+    ScCid?: boolean
+    li_fat_id?: boolean
+    twclid?: boolean
+    utm_source?: boolean
+    utm_medium?: boolean
+    utm_campaign?: boolean
+    utm_content?: boolean
+    utm_term?: boolean
+    utm_matchtype?: boolean
+    landing_referrer?: boolean
     createdAt?: boolean
   }
 
-  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "preferredDate" | "availableTime" | "emirate" | "area" | "hearAboutUs" | "message" | "shutterTypes" | "createdAt", ExtArgs["result"]["appointment"]>
+  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "whatsapp" | "preferredDate" | "availableTime" | "emirate" | "area" | "hearAboutUs" | "message" | "shutterTypes" | "lead_source" | "gclid" | "fbclid" | "msclkid" | "ttclid" | "epik" | "ScCid" | "li_fat_id" | "twclid" | "utm_source" | "utm_medium" | "utm_campaign" | "utm_content" | "utm_term" | "utm_matchtype" | "landing_referrer" | "createdAt", ExtArgs["result"]["appointment"]>
 
   export type $AppointmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Appointment"
@@ -7709,6 +7885,22 @@ export namespace Prisma {
       hearAboutUs: string | null
       message: string | null
       shutterTypes: string[]
+      lead_source: string | null
+      gclid: string | null
+      fbclid: string | null
+      msclkid: string | null
+      ttclid: string | null
+      epik: string | null
+      ScCid: string | null
+      li_fat_id: string | null
+      twclid: string | null
+      utm_source: string | null
+      utm_medium: string | null
+      utm_campaign: string | null
+      utm_content: string | null
+      utm_term: string | null
+      utm_matchtype: string | null
+      landing_referrer: string | null
       createdAt: Date
     }, ExtArgs["result"]["appointment"]>
     composites: {}
@@ -8145,6 +8337,22 @@ export namespace Prisma {
     readonly hearAboutUs: FieldRef<"Appointment", 'String'>
     readonly message: FieldRef<"Appointment", 'String'>
     readonly shutterTypes: FieldRef<"Appointment", 'String[]'>
+    readonly lead_source: FieldRef<"Appointment", 'String'>
+    readonly gclid: FieldRef<"Appointment", 'String'>
+    readonly fbclid: FieldRef<"Appointment", 'String'>
+    readonly msclkid: FieldRef<"Appointment", 'String'>
+    readonly ttclid: FieldRef<"Appointment", 'String'>
+    readonly epik: FieldRef<"Appointment", 'String'>
+    readonly ScCid: FieldRef<"Appointment", 'String'>
+    readonly li_fat_id: FieldRef<"Appointment", 'String'>
+    readonly twclid: FieldRef<"Appointment", 'String'>
+    readonly utm_source: FieldRef<"Appointment", 'String'>
+    readonly utm_medium: FieldRef<"Appointment", 'String'>
+    readonly utm_campaign: FieldRef<"Appointment", 'String'>
+    readonly utm_content: FieldRef<"Appointment", 'String'>
+    readonly utm_term: FieldRef<"Appointment", 'String'>
+    readonly utm_matchtype: FieldRef<"Appointment", 'String'>
+    readonly landing_referrer: FieldRef<"Appointment", 'String'>
     readonly createdAt: FieldRef<"Appointment", 'DateTime'>
   }
     
@@ -10783,6 +10991,22 @@ export namespace Prisma {
     hearAboutUs: 'hearAboutUs',
     message: 'message',
     shutterTypes: 'shutterTypes',
+    lead_source: 'lead_source',
+    gclid: 'gclid',
+    fbclid: 'fbclid',
+    msclkid: 'msclkid',
+    ttclid: 'ttclid',
+    epik: 'epik',
+    ScCid: 'ScCid',
+    li_fat_id: 'li_fat_id',
+    twclid: 'twclid',
+    utm_source: 'utm_source',
+    utm_medium: 'utm_medium',
+    utm_campaign: 'utm_campaign',
+    utm_content: 'utm_content',
+    utm_term: 'utm_term',
+    utm_matchtype: 'utm_matchtype',
+    landing_referrer: 'landing_referrer',
     createdAt: 'createdAt'
   };
 
@@ -11523,6 +11747,22 @@ export namespace Prisma {
     hearAboutUs?: StringNullableFilter<"Appointment"> | string | null
     message?: StringNullableFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
+    lead_source?: StringNullableFilter<"Appointment"> | string | null
+    gclid?: StringNullableFilter<"Appointment"> | string | null
+    fbclid?: StringNullableFilter<"Appointment"> | string | null
+    msclkid?: StringNullableFilter<"Appointment"> | string | null
+    ttclid?: StringNullableFilter<"Appointment"> | string | null
+    epik?: StringNullableFilter<"Appointment"> | string | null
+    ScCid?: StringNullableFilter<"Appointment"> | string | null
+    li_fat_id?: StringNullableFilter<"Appointment"> | string | null
+    twclid?: StringNullableFilter<"Appointment"> | string | null
+    utm_source?: StringNullableFilter<"Appointment"> | string | null
+    utm_medium?: StringNullableFilter<"Appointment"> | string | null
+    utm_campaign?: StringNullableFilter<"Appointment"> | string | null
+    utm_content?: StringNullableFilter<"Appointment"> | string | null
+    utm_term?: StringNullableFilter<"Appointment"> | string | null
+    utm_matchtype?: StringNullableFilter<"Appointment"> | string | null
+    landing_referrer?: StringNullableFilter<"Appointment"> | string | null
     createdAt?: DateTimeFilter<"Appointment"> | Date | string
   }
 
@@ -11539,6 +11779,22 @@ export namespace Prisma {
     hearAboutUs?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
     shutterTypes?: SortOrder
+    lead_source?: SortOrderInput | SortOrder
+    gclid?: SortOrderInput | SortOrder
+    fbclid?: SortOrderInput | SortOrder
+    msclkid?: SortOrderInput | SortOrder
+    ttclid?: SortOrderInput | SortOrder
+    epik?: SortOrderInput | SortOrder
+    ScCid?: SortOrderInput | SortOrder
+    li_fat_id?: SortOrderInput | SortOrder
+    twclid?: SortOrderInput | SortOrder
+    utm_source?: SortOrderInput | SortOrder
+    utm_medium?: SortOrderInput | SortOrder
+    utm_campaign?: SortOrderInput | SortOrder
+    utm_content?: SortOrderInput | SortOrder
+    utm_term?: SortOrderInput | SortOrder
+    utm_matchtype?: SortOrderInput | SortOrder
+    landing_referrer?: SortOrderInput | SortOrder
     createdAt?: SortOrder
   }
 
@@ -11558,6 +11814,22 @@ export namespace Prisma {
     hearAboutUs?: StringNullableFilter<"Appointment"> | string | null
     message?: StringNullableFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
+    lead_source?: StringNullableFilter<"Appointment"> | string | null
+    gclid?: StringNullableFilter<"Appointment"> | string | null
+    fbclid?: StringNullableFilter<"Appointment"> | string | null
+    msclkid?: StringNullableFilter<"Appointment"> | string | null
+    ttclid?: StringNullableFilter<"Appointment"> | string | null
+    epik?: StringNullableFilter<"Appointment"> | string | null
+    ScCid?: StringNullableFilter<"Appointment"> | string | null
+    li_fat_id?: StringNullableFilter<"Appointment"> | string | null
+    twclid?: StringNullableFilter<"Appointment"> | string | null
+    utm_source?: StringNullableFilter<"Appointment"> | string | null
+    utm_medium?: StringNullableFilter<"Appointment"> | string | null
+    utm_campaign?: StringNullableFilter<"Appointment"> | string | null
+    utm_content?: StringNullableFilter<"Appointment"> | string | null
+    utm_term?: StringNullableFilter<"Appointment"> | string | null
+    utm_matchtype?: StringNullableFilter<"Appointment"> | string | null
+    landing_referrer?: StringNullableFilter<"Appointment"> | string | null
     createdAt?: DateTimeFilter<"Appointment"> | Date | string
   }, "id">
 
@@ -11574,6 +11846,22 @@ export namespace Prisma {
     hearAboutUs?: SortOrderInput | SortOrder
     message?: SortOrderInput | SortOrder
     shutterTypes?: SortOrder
+    lead_source?: SortOrderInput | SortOrder
+    gclid?: SortOrderInput | SortOrder
+    fbclid?: SortOrderInput | SortOrder
+    msclkid?: SortOrderInput | SortOrder
+    ttclid?: SortOrderInput | SortOrder
+    epik?: SortOrderInput | SortOrder
+    ScCid?: SortOrderInput | SortOrder
+    li_fat_id?: SortOrderInput | SortOrder
+    twclid?: SortOrderInput | SortOrder
+    utm_source?: SortOrderInput | SortOrder
+    utm_medium?: SortOrderInput | SortOrder
+    utm_campaign?: SortOrderInput | SortOrder
+    utm_content?: SortOrderInput | SortOrder
+    utm_term?: SortOrderInput | SortOrder
+    utm_matchtype?: SortOrderInput | SortOrder
+    landing_referrer?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: AppointmentCountOrderByAggregateInput
     _max?: AppointmentMaxOrderByAggregateInput
@@ -11596,6 +11884,22 @@ export namespace Prisma {
     hearAboutUs?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     message?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     shutterTypes?: StringNullableListFilter<"Appointment">
+    lead_source?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    gclid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    fbclid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    msclkid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    ttclid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    epik?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    ScCid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    li_fat_id?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    twclid?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_source?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_medium?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_campaign?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_content?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_term?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    utm_matchtype?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    landing_referrer?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Appointment"> | Date | string
   }
 
@@ -12407,6 +12711,22 @@ export namespace Prisma {
     hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
+    lead_source?: string | null
+    gclid?: string | null
+    fbclid?: string | null
+    msclkid?: string | null
+    ttclid?: string | null
+    epik?: string | null
+    ScCid?: string | null
+    li_fat_id?: string | null
+    twclid?: string | null
+    utm_source?: string | null
+    utm_medium?: string | null
+    utm_campaign?: string | null
+    utm_content?: string | null
+    utm_term?: string | null
+    utm_matchtype?: string | null
+    landing_referrer?: string | null
     createdAt?: Date | string
   }
 
@@ -12423,6 +12743,22 @@ export namespace Prisma {
     hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
+    lead_source?: string | null
+    gclid?: string | null
+    fbclid?: string | null
+    msclkid?: string | null
+    ttclid?: string | null
+    epik?: string | null
+    ScCid?: string | null
+    li_fat_id?: string | null
+    twclid?: string | null
+    utm_source?: string | null
+    utm_medium?: string | null
+    utm_campaign?: string | null
+    utm_content?: string | null
+    utm_term?: string | null
+    utm_matchtype?: string | null
+    landing_referrer?: string | null
     createdAt?: Date | string
   }
 
@@ -12439,6 +12775,22 @@ export namespace Prisma {
     hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
+    lead_source?: NullableStringFieldUpdateOperationsInput | string | null
+    gclid?: NullableStringFieldUpdateOperationsInput | string | null
+    fbclid?: NullableStringFieldUpdateOperationsInput | string | null
+    msclkid?: NullableStringFieldUpdateOperationsInput | string | null
+    ttclid?: NullableStringFieldUpdateOperationsInput | string | null
+    epik?: NullableStringFieldUpdateOperationsInput | string | null
+    ScCid?: NullableStringFieldUpdateOperationsInput | string | null
+    li_fat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    twclid?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_content?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_term?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_matchtype?: NullableStringFieldUpdateOperationsInput | string | null
+    landing_referrer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12455,6 +12807,22 @@ export namespace Prisma {
     hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
+    lead_source?: NullableStringFieldUpdateOperationsInput | string | null
+    gclid?: NullableStringFieldUpdateOperationsInput | string | null
+    fbclid?: NullableStringFieldUpdateOperationsInput | string | null
+    msclkid?: NullableStringFieldUpdateOperationsInput | string | null
+    ttclid?: NullableStringFieldUpdateOperationsInput | string | null
+    epik?: NullableStringFieldUpdateOperationsInput | string | null
+    ScCid?: NullableStringFieldUpdateOperationsInput | string | null
+    li_fat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    twclid?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_content?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_term?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_matchtype?: NullableStringFieldUpdateOperationsInput | string | null
+    landing_referrer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12471,6 +12839,22 @@ export namespace Prisma {
     hearAboutUs?: string | null
     message?: string | null
     shutterTypes?: AppointmentCreateshutterTypesInput | string[]
+    lead_source?: string | null
+    gclid?: string | null
+    fbclid?: string | null
+    msclkid?: string | null
+    ttclid?: string | null
+    epik?: string | null
+    ScCid?: string | null
+    li_fat_id?: string | null
+    twclid?: string | null
+    utm_source?: string | null
+    utm_medium?: string | null
+    utm_campaign?: string | null
+    utm_content?: string | null
+    utm_term?: string | null
+    utm_matchtype?: string | null
+    landing_referrer?: string | null
     createdAt?: Date | string
   }
 
@@ -12487,6 +12871,22 @@ export namespace Prisma {
     hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
+    lead_source?: NullableStringFieldUpdateOperationsInput | string | null
+    gclid?: NullableStringFieldUpdateOperationsInput | string | null
+    fbclid?: NullableStringFieldUpdateOperationsInput | string | null
+    msclkid?: NullableStringFieldUpdateOperationsInput | string | null
+    ttclid?: NullableStringFieldUpdateOperationsInput | string | null
+    epik?: NullableStringFieldUpdateOperationsInput | string | null
+    ScCid?: NullableStringFieldUpdateOperationsInput | string | null
+    li_fat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    twclid?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_content?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_term?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_matchtype?: NullableStringFieldUpdateOperationsInput | string | null
+    landing_referrer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12503,6 +12903,22 @@ export namespace Prisma {
     hearAboutUs?: NullableStringFieldUpdateOperationsInput | string | null
     message?: NullableStringFieldUpdateOperationsInput | string | null
     shutterTypes?: AppointmentUpdateshutterTypesInput | string[]
+    lead_source?: NullableStringFieldUpdateOperationsInput | string | null
+    gclid?: NullableStringFieldUpdateOperationsInput | string | null
+    fbclid?: NullableStringFieldUpdateOperationsInput | string | null
+    msclkid?: NullableStringFieldUpdateOperationsInput | string | null
+    ttclid?: NullableStringFieldUpdateOperationsInput | string | null
+    epik?: NullableStringFieldUpdateOperationsInput | string | null
+    ScCid?: NullableStringFieldUpdateOperationsInput | string | null
+    li_fat_id?: NullableStringFieldUpdateOperationsInput | string | null
+    twclid?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_source?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_medium?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_campaign?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_content?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_term?: NullableStringFieldUpdateOperationsInput | string | null
+    utm_matchtype?: NullableStringFieldUpdateOperationsInput | string | null
+    landing_referrer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -13183,6 +13599,22 @@ export namespace Prisma {
     hearAboutUs?: SortOrder
     message?: SortOrder
     shutterTypes?: SortOrder
+    lead_source?: SortOrder
+    gclid?: SortOrder
+    fbclid?: SortOrder
+    msclkid?: SortOrder
+    ttclid?: SortOrder
+    epik?: SortOrder
+    ScCid?: SortOrder
+    li_fat_id?: SortOrder
+    twclid?: SortOrder
+    utm_source?: SortOrder
+    utm_medium?: SortOrder
+    utm_campaign?: SortOrder
+    utm_content?: SortOrder
+    utm_term?: SortOrder
+    utm_matchtype?: SortOrder
+    landing_referrer?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -13198,6 +13630,22 @@ export namespace Prisma {
     area?: SortOrder
     hearAboutUs?: SortOrder
     message?: SortOrder
+    lead_source?: SortOrder
+    gclid?: SortOrder
+    fbclid?: SortOrder
+    msclkid?: SortOrder
+    ttclid?: SortOrder
+    epik?: SortOrder
+    ScCid?: SortOrder
+    li_fat_id?: SortOrder
+    twclid?: SortOrder
+    utm_source?: SortOrder
+    utm_medium?: SortOrder
+    utm_campaign?: SortOrder
+    utm_content?: SortOrder
+    utm_term?: SortOrder
+    utm_matchtype?: SortOrder
+    landing_referrer?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -13213,6 +13661,22 @@ export namespace Prisma {
     area?: SortOrder
     hearAboutUs?: SortOrder
     message?: SortOrder
+    lead_source?: SortOrder
+    gclid?: SortOrder
+    fbclid?: SortOrder
+    msclkid?: SortOrder
+    ttclid?: SortOrder
+    epik?: SortOrder
+    ScCid?: SortOrder
+    li_fat_id?: SortOrder
+    twclid?: SortOrder
+    utm_source?: SortOrder
+    utm_medium?: SortOrder
+    utm_campaign?: SortOrder
+    utm_content?: SortOrder
+    utm_term?: SortOrder
+    utm_matchtype?: SortOrder
+    landing_referrer?: SortOrder
     createdAt?: SortOrder
   }
 

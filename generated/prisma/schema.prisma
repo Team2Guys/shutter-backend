@@ -139,19 +139,36 @@ model Blog {
 }
 
 model Appointment {
-  id            String   @id @default(uuid()) @db.Uuid
-  name          String
-  email         String
-  phone         String
-  whatsapp      String?
-  preferredDate String?
-  availableTime String
-  emirate       String
-  area          String
-  hearAboutUs   String?
-  message       String?  @db.Text()
-  shutterTypes  String[]
-  createdAt     DateTime @default(now())
+  id               String   @id @default(uuid()) @db.Uuid
+  name             String
+  email            String
+  phone            String
+  whatsapp         String?
+  preferredDate    String?
+  availableTime    String
+  emirate          String
+  area             String
+  hearAboutUs      String?
+  message          String?  @db.Text()
+  shutterTypes     String[]
+  lead_source      String?
+  gclid            String?
+  fbclid           String?
+  msclkid          String?
+  ttclid           String?
+  epik             String?
+  ScCid            String?
+  li_fat_id        String?
+  twclid           String?
+  utm_source       String?
+  utm_medium       String?
+  utm_campaign     String?
+  utm_content      String?
+  utm_term         String?
+  utm_matchtype    String?
+  landing_referrer String?
+
+  createdAt DateTime @default(now())
 }
 
 model Testimonial {
