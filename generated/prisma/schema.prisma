@@ -55,6 +55,10 @@ model Category {
   blogCanonicalUrl    String?
   blogSeoSchema       String? @db.Text()
 
+  // Ordered FAQ list shown at the bottom of /{path}/. Each entry is
+  // { question, answer }; answers may contain HTML (internal links).
+  faq Json[] @default([])
+
   lastEditedBy String
   status       ContentStatus @default(PUBLISHED)
 

@@ -15,7 +15,8 @@
     "db:migrate": "npx prisma migrate dev",
     "db:deploy": "npx prisma migrate deploy && npx prisma generate",
     "db:reset": "npx prisma migrate reset",
-    "db:seed": "node prisma/seed.js"
+    "db:seed": "node prisma/seed.js",
+    "db:seed:faqs": "node prisma/seed-category-faqs.js"
   },
   "author": "",
   "license": "ISC",
@@ -58,4 +59,4 @@
     "#middleware/*": "./src/middleware/*",
     "#modules/*": "./src/modules/*"
   }
-}
+}

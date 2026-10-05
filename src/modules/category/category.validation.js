@@ -26,6 +26,17 @@ const blogSeoFields = {
   blogSeoSchema: optionalText,
 };
 
+/** One FAQ entry. Answers may carry HTML (internal links) rendered by the site. */
+const faqItem = z.object({
+  question: z.string().trim().default(""),
+  answer: z.string().trim().default(""),
+});
+
+/** Ordered FAQ list; entries with neither a question nor an answer are dropped. */
+const faqList = z
+  .array(faqItem)
+  .transform((list) => list.filter((f) => f.question || f.answer))
+  .optional();
 export const createCategorySchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
   description: z.string().trim().min(1, "Description is required"),
@@ -38,6 +49,7 @@ export const createCategorySchema = z.object({
   canonicalUrl: z.string().trim().min(1, "Canonical URL is required"),
   seoSchema: z.string().trim().optional().nullable(),
   ...blogSeoFields,
+  faq: faqList,
   status: status.optional(),
 });
 
@@ -54,6 +66,7 @@ export const updateCategorySchema = z
     canonicalUrl: z.string().trim().min(1).optional(),
     seoSchema: z.string().trim().optional().nullable(),
     ...blogSeoFields,
+    faq: faqList,
     status: status.optional(),
   })
   .refine((data) => Object.keys(data).length > 0, {

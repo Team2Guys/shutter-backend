@@ -148,6 +148,7 @@ exports.Prisma.CategoryScalarFieldEnum = {
   blogMetaDescription: 'blogMetaDescription',
   blogCanonicalUrl: 'blogCanonicalUrl',
   blogSeoSchema: 'blogSeoSchema',
+  faq: 'faq',
   lastEditedBy: 'lastEditedBy',
   status: 'status',
   createdAt: 'createdAt',

@@ -17,6 +17,7 @@ export const categoryTypeDefs = gql`
     blogMetaDescription: String
     blogCanonicalUrl: String
     blogSeoSchema: String
+    faq: [JSON!]
     lastEditedBy: String!
     status: ContentStatus!
     createdAt: DateTime!
@@ -40,6 +41,7 @@ export const categoryTypeDefs = gql`
     blogMetaDescription: String
     blogCanonicalUrl: String
     blogSeoSchema: String
+    faq: [JSON!]
     status: ContentStatus
   }
 
@@ -58,6 +60,7 @@ export const categoryTypeDefs = gql`
     blogMetaDescription: String
     blogCanonicalUrl: String
     blogSeoSchema: String
+    faq: [JSON!]
     status: ContentStatus
   }
 
@@ -81,6 +84,7 @@ export const categoryTypeDefs = gql`
     blogMetaDescription: String
     blogCanonicalUrl: String
     blogSeoSchema: String
+    faq: [JSON!]
     status: ContentStatus
   }
 

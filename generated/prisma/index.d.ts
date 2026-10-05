@@ -2677,6 +2677,7 @@ export namespace Prisma {
     blogMetaDescription: number
     blogCanonicalUrl: number
     blogSeoSchema: number
+    faq: number
     lastEditedBy: number
     status: number
     createdAt: number
@@ -2741,6 +2742,7 @@ export namespace Prisma {
     blogMetaDescription?: true
     blogCanonicalUrl?: true
     blogSeoSchema?: true
+    faq?: true
     lastEditedBy?: true
     status?: true
     createdAt?: true
@@ -2836,6 +2838,7 @@ export namespace Prisma {
     blogMetaDescription: string | null
     blogCanonicalUrl: string | null
     blogSeoSchema: string | null
+    faq: JsonValue[]
     lastEditedBy: string
     status: $Enums.ContentStatus
     createdAt: Date
@@ -2875,6 +2878,7 @@ export namespace Prisma {
     blogMetaDescription?: boolean
     blogCanonicalUrl?: boolean
     blogSeoSchema?: boolean
+    faq?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2900,6 +2904,7 @@ export namespace Prisma {
     blogMetaDescription?: boolean
     blogCanonicalUrl?: boolean
     blogSeoSchema?: boolean
+    faq?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2922,6 +2927,7 @@ export namespace Prisma {
     blogMetaDescription?: boolean
     blogCanonicalUrl?: boolean
     blogSeoSchema?: boolean
+    faq?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
@@ -2944,13 +2950,14 @@ export namespace Prisma {
     blogMetaDescription?: boolean
     blogCanonicalUrl?: boolean
     blogSeoSchema?: boolean
+    faq?: boolean
     lastEditedBy?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "blogMetaTitle" | "blogMetaDescription" | "blogCanonicalUrl" | "blogSeoSchema" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "breadcrumb" | "bannerImage" | "path" | "posterImage" | "metaTitle" | "metaDescription" | "canonicalUrl" | "seoSchema" | "blogMetaTitle" | "blogMetaDescription" | "blogCanonicalUrl" | "blogSeoSchema" | "faq" | "lastEditedBy" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Category$productsArgs<ExtArgs>
     blogs?: boolean | Category$blogsArgs<ExtArgs>
@@ -2981,6 +2988,7 @@ export namespace Prisma {
       blogMetaDescription: string | null
       blogCanonicalUrl: string | null
       blogSeoSchema: string | null
+      faq: Prisma.JsonValue[]
       lastEditedBy: string
       status: $Enums.ContentStatus
       createdAt: Date
@@ -3425,6 +3433,7 @@ export namespace Prisma {
     readonly blogMetaDescription: FieldRef<"Category", 'String'>
     readonly blogCanonicalUrl: FieldRef<"Category", 'String'>
     readonly blogSeoSchema: FieldRef<"Category", 'String'>
+    readonly faq: FieldRef<"Category", 'Json[]'>
     readonly lastEditedBy: FieldRef<"Category", 'String'>
     readonly status: FieldRef<"Category", 'ContentStatus'>
     readonly createdAt: FieldRef<"Category", 'DateTime'>
@@ -10901,6 +10910,7 @@ export namespace Prisma {
     blogMetaDescription: 'blogMetaDescription',
     blogCanonicalUrl: 'blogCanonicalUrl',
     blogSeoSchema: 'blogSeoSchema',
+    faq: 'faq',
     lastEditedBy: 'lastEditedBy',
     status: 'status',
     createdAt: 'createdAt',
@@ -11143,6 +11153,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json[]'
+   */
+  export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ContentStatus'
    */
   export type EnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStatus'>
@@ -11153,13 +11170,6 @@ export namespace Prisma {
    * Reference to a field of type 'ContentStatus[]'
    */
   export type ListEnumContentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStatus[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json[]'
-   */
-  export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
     
 
 
@@ -11285,6 +11295,7 @@ export namespace Prisma {
     blogMetaDescription?: StringNullableFilter<"Category"> | string | null
     blogCanonicalUrl?: StringNullableFilter<"Category"> | string | null
     blogSeoSchema?: StringNullableFilter<"Category"> | string | null
+    faq?: JsonNullableListFilter<"Category">
     lastEditedBy?: StringFilter<"Category"> | string
     status?: EnumContentStatusFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeFilter<"Category"> | Date | string
@@ -11309,6 +11320,7 @@ export namespace Prisma {
     blogMetaDescription?: SortOrderInput | SortOrder
     blogCanonicalUrl?: SortOrderInput | SortOrder
     blogSeoSchema?: SortOrderInput | SortOrder
+    faq?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -11336,6 +11348,7 @@ export namespace Prisma {
     blogMetaDescription?: StringNullableFilter<"Category"> | string | null
     blogCanonicalUrl?: StringNullableFilter<"Category"> | string | null
     blogSeoSchema?: StringNullableFilter<"Category"> | string | null
+    faq?: JsonNullableListFilter<"Category">
     lastEditedBy?: StringFilter<"Category"> | string
     status?: EnumContentStatusFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeFilter<"Category"> | Date | string
@@ -11360,6 +11373,7 @@ export namespace Prisma {
     blogMetaDescription?: SortOrderInput | SortOrder
     blogCanonicalUrl?: SortOrderInput | SortOrder
     blogSeoSchema?: SortOrderInput | SortOrder
+    faq?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -11388,6 +11402,7 @@ export namespace Prisma {
     blogMetaDescription?: StringNullableWithAggregatesFilter<"Category"> | string | null
     blogCanonicalUrl?: StringNullableWithAggregatesFilter<"Category"> | string | null
     blogSeoSchema?: StringNullableWithAggregatesFilter<"Category"> | string | null
+    faq?: JsonNullableListFilter<"Category">
     lastEditedBy?: StringWithAggregatesFilter<"Category"> | string
     status?: EnumContentStatusWithAggregatesFilter<"Category"> | $Enums.ContentStatus
     createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
@@ -12141,6 +12156,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -12165,6 +12181,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -12189,6 +12206,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12213,6 +12231,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12237,6 +12256,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -12259,6 +12279,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12281,6 +12302,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13257,6 +13279,20 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
+  export type JsonNullableListFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableListFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableListFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel> | null
+    has?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    hasEvery?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    hasSome?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
 
   export type EnumContentStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ContentStatus | EnumContentStatusFieldRefInput<$PrismaModel>
@@ -13306,6 +13342,7 @@ export namespace Prisma {
     blogMetaDescription?: SortOrder
     blogCanonicalUrl?: SortOrder
     blogSeoSchema?: SortOrder
+    faq?: SortOrder
     lastEditedBy?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -13404,20 +13441,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumContentStatusFilter<$PrismaModel>
     _max?: NestedEnumContentStatusFilter<$PrismaModel>
-  }
-  export type JsonNullableListFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableListFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableListFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel> | null
-    has?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    hasEvery?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
-    hasSome?: InputJsonValue[] | ListJsonFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
   }
 
   export type CategoryScalarRelationFilter = {
@@ -13810,6 +13833,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type CategoryCreatefaqInput = {
+    set: InputJsonValue[]
+  }
+
   export type ProductCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ProductCreateWithoutCategoryInput, ProductUncheckedCreateWithoutCategoryInput> | ProductCreateWithoutCategoryInput[] | ProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutCategoryInput | ProductCreateOrConnectWithoutCategoryInput[]
@@ -13840,6 +13867,11 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type CategoryUpdatefaqInput = {
+    set?: InputJsonValue[]
+    push?: InputJsonValue | InputJsonValue[]
   }
 
   export type EnumContentStatusFieldUpdateOperationsInput = {
@@ -14400,6 +14432,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -14423,6 +14456,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -14462,6 +14496,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14485,6 +14520,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14508,6 +14544,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -14531,6 +14568,7 @@ export namespace Prisma {
     blogMetaDescription?: string | null
     blogCanonicalUrl?: string | null
     blogSeoSchema?: string | null
+    faq?: CategoryCreatefaqInput | InputJsonValue[]
     lastEditedBy: string
     status?: $Enums.ContentStatus
     createdAt?: Date | string
@@ -14570,6 +14608,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14593,6 +14632,7 @@ export namespace Prisma {
     blogMetaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     blogCanonicalUrl?: NullableStringFieldUpdateOperationsInput | string | null
     blogSeoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    faq?: CategoryUpdatefaqInput | InputJsonValue[]
     lastEditedBy?: StringFieldUpdateOperationsInput | string
     status?: EnumContentStatusFieldUpdateOperationsInput | $Enums.ContentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
