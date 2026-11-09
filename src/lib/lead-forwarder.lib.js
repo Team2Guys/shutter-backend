@@ -49,6 +49,9 @@ export const forwardAppointmentLead = async (appointment) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: jsonbody,
+      // The booking now waits for this push; a slow CRM must not hold the
+      // response up to the function's 30 s limit.
+      signal: AbortSignal.timeout(10_000),
     });
 
     logger.info(`[lead-forwarder] lead push response: appointment=${jsonbody} ${res.status} ${res.statusText}`);

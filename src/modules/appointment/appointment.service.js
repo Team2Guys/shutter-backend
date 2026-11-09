@@ -76,14 +76,21 @@ export const appointmentService = {
 
   create: async (input) => {
     const appointment = await prisma.appointment.create({ data: input });
-    // Fire-and-forget: neither must fail the booking, and an escaping rejection
-    // would take the process down under Node's default unhandled-rejection mode.
-    sendAppointmentEmails(appointment).catch((error) =>
-      logger.error(`[appointment] email notification crashed: ${error.stack || error.message}`)
-    );
-    forwardAppointmentLead(appointment).catch((error) =>
-      logger.error(`[appointment] lead forwarding crashed: ${error.stack || error.message}`)
-    );
+    // Wait for the notifications before responding. This used to be
+    // fire-and-forget, but on Vercel the function is frozen the moment the
+    // response goes out, so the background work never finished: bookings were
+    // saved while no email or lead push ever left the server. Both tasks catch
+    // their own failures (and the mail transport has 10 s timeouts), so a mail
+    // or CRM problem still cannot fail the booking — it only delays the
+    // response by the send time.
+    await Promise.allSettled([
+      sendAppointmentEmails(appointment).catch((error) =>
+        logger.error(`[appointment] email notification crashed: ${error.stack || error.message}`)
+      ),
+      forwardAppointmentLead(appointment).catch((error) =>
+        logger.error(`[appointment] lead forwarding crashed: ${error.stack || error.message}`)
+      ),
+    ]);
     return appointment;
   },
 };
